@@ -168,6 +168,9 @@ function zz_generate_og_mosaic($verbose = false) {
 		}
 
 		update_post_meta($att_id, '_wp_attached_file', 'site/og/og-collaborations.webp');
+		if (!function_exists('wp_generate_attachment_metadata')) {
+			require_once ABSPATH . 'wp-admin/includes/image.php';
+		}
 		$meta = wp_generate_attachment_metadata($att_id, $dest);
 		wp_update_attachment_metadata($att_id, $meta);
 

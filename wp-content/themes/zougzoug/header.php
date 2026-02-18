@@ -44,7 +44,7 @@
 			<a href="<?php echo esc_url(home_url('/revendeurs/')); ?>">Revendeurs & Évènements</a>
 		</nav>
 		<div class="mobile-nav-contact">
-			<a href="mailto:atelierzougzoug@gmail.com">atelierzougzoug@gmail.com</a>
+			<a href="<?php echo esc_url(home_url('/contact/')); ?>">atelierzougzoug@gmail.com</a>
 			<a href="tel:+33660199818">06 60 19 98 18</a>
 		</div>
 	</div>

@@ -306,6 +306,22 @@
   color: #1A1A1A;
 }
 
+/* Honeypot — invisible aux humains */
+.form-group--hp {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* Turnstile widget */
+.cf-turnstile-wrap {
+  margin: 8px 0 24px;
+}
+
 
 /* ============================================================
    BANDE PHOTOS — 2 images cote a cote

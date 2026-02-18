@@ -36,7 +36,7 @@ add_action('after_setup_theme', function () {
 
 // Hide admin bar in editor preview iframe
 add_filter('show_admin_bar', function ($show) {
-	if (isset($_GET['zz_preview']) && $_GET['zz_preview'] === '1') {
+	if (isset($_GET['zz_preview']) && absint($_GET['zz_preview']) === 1) {
 		return false;
 	}
 	return $show;

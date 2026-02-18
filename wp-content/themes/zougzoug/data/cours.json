@@ -8,19 +8,19 @@
     "faq": [
         {
             "question": "Quel matériel est fourni pour les cours de céramique ?",
-            "answer": "Tout le matériel est fourni : argile, outils de tournage, émaux. Vous repartez avec votre pièce après cuisson (comptez 3 à 4 semaines)."
+            "answer": "<p>Tout le matériel est fourni : argile, outils de tournage, émaux. Vous repartez avec votre pièce après cuisson (comptez 3 à 4 semaines).</p>"
         },
         {
             "question": "Faut-il avoir de l'expérience pour participer ?",
-            "answer": "Aucune expérience n'est requise. Les cours sont adaptés aux débutants comme aux initiés. Charlotte vous guide pas à pas."
+            "answer": "<p>Aucune expérience n'est requise. Les cours sont adaptés aux débutants comme aux initiés. Charlotte vous guide pas à pas.</p>"
         },
         {
             "question": "Où se déroulent les cours ?",
-            "answer": "Les cours ont lieu à l'Atelier ZougZoug, 6 rue de la Terrasse, 43100 Brioude, au cœur de l'Auvergne."
+            "answer": "<p>Les cours ont lieu à l'Atelier ZougZoug, 6 rue de la Terrasse, 43100 Brioude, au cœur de l'Auvergne.</p>"
         },
         {
             "question": "Comment réserver un cours de céramique ?",
-            "answer": "Contactez Charlotte par email à atelierzougzoug@gmail.com ou par téléphone au 06 60 19 98 18. Vous pouvez aussi réserver via WeCanDoo."
+            "answer": "<p>Contactez Charlotte par email à atelierzougzoug@gmail.com ou par téléphone au 06 60 19 98 18. Vous pouvez aussi réserver via WeCanDoo.</p>"
         }
     ],
     "hero": {
@@ -31,14 +31,14 @@
     },
     "intro": {
         "accroche": "Découvrir la céramique, les mains dans la terre, au cœur de l'Auvergne.",
-        "text": "Charlotte vous accueille dans son atelier à Brioude pour des initiations au tournage et au modelage. Seul, en duo ou en petit groupe — un moment hors du temps, guidé pas à pas."
+        "text": "<p>Charlotte vous accueille dans son atelier à Brioude pour des initiations au tournage et au modelage. Seul, en duo ou en petit groupe — un moment hors du temps, guidé pas à pas.</p>"
     },
     "offres_label": "Les ateliers",
     "offres_title": "Trouvez l'atelier qui vous correspond.",
     "offres": [
         {
             "nom": "Duo tournage",
-            "description": "Venez à deux découvrir le tour de potier. Un moment complice, les mains dans l'argile.",
+            "description": "<p>Venez à deux découvrir le tour de potier. Un moment complice, les mains dans l'argile.</p>",
             "prix": 130,
             "infos": [
                 "2 personnes max"
@@ -46,7 +46,7 @@
         },
         {
             "nom": "Initiation tournage",
-            "description": "Découvrez les gestes du tournage et repartez avec votre création.",
+            "description": "<p>Découvrez les gestes du tournage et repartez avec votre création.</p>",
             "prix": 70,
             "infos": [
                 "2h30",
@@ -55,16 +55,16 @@
         },
         {
             "nom": "Initiation modelage",
-            "description": "Apprenez à modeler l'argile à la main : plaques, colombins, empreintes végétales.",
-            "prix": 55,
+            "description": "<p>Apprenez à modeler l'argile à la main : plaques, colombins, empreintes végétales.</p>",
+            "prix": 53,
             "infos": [
                 "2h",
                 "4 personnes max"
             ]
         },
         {
-            "nom": "Tournage & modelage",
-            "description": "Un atelier complet pour explorer les deux techniques de la céramique.",
+            "nom": "Tournage &amp; modelage",
+            "description": "<p>Un atelier complet pour explorer les deux techniques de la céramique.</p>",
             "prix": 65,
             "infos": [
                 "2h30",
@@ -95,8 +95,8 @@
         ]
     },
     "cta": {
-        "text": "Envie de mettre les mains dans la terre ?\nRéservez votre atelier.",
+        "text": "<p>Envie de mettre les mains dans la terre ? Réservez votre atelier.</p>",
         "button": "Me contacter",
-        "url": "mailto:atelierzougzoug@gmail.com"
+        "url": "/contact/"
     }
 }

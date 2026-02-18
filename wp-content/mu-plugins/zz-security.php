@@ -61,7 +61,7 @@ add_filter('rest_authentication_errors', function($result) {
 
 // Desactiver l'enumeration des utilisateurs
 add_action('init', function() {
-	if (!is_admin() && isset($_REQUEST['author'])) {
+	if (!is_admin() && isset($_GET['author'])) {
 		wp_redirect(home_url(), 301);
 		exit;
 	}

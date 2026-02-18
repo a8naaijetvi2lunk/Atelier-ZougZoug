@@ -36,7 +36,7 @@
 			<div class="footer-col">
 				<span class="footer-col-title">Contact</span>
 				<div class="footer-contact">
-					<a href="mailto:atelierzougzoug@gmail.com">atelierzougzoug@gmail.com</a>
+					<a href="<?php echo esc_url(home_url('/contact/')); ?>">atelierzougzoug@gmail.com</a>
 					<a href="tel:+33660199818">06 60 19 98 18</a>
 					<p>6 rue de la Terrasse<br>43100 Brioude</p>
 				</div>

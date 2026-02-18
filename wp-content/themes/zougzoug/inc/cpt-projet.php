@@ -537,9 +537,9 @@ add_action('save_post_projet', function ($post_id) {
 		}
 	}
 
-	if (isset($_POST['_projet_gallery'])) {
-		$raw = $_POST['_projet_gallery'];
-		$decoded = json_decode(stripslashes($raw), true);
+	if (isset($_POST['_projet_gallery']) && is_string($_POST['_projet_gallery'])) {
+		$raw = sanitize_text_field(wp_unslash($_POST['_projet_gallery']));
+		$decoded = json_decode($raw, true);
 		if (is_array($decoded)) {
 			$gallery = array_values(array_filter(array_map('intval', $decoded)));
 		} else {
@@ -567,8 +567,8 @@ add_action('save_post_projet', function ($post_id) {
 	}
 
 	// Sauvegarder les orientations de la galerie
-	if (isset($_POST['_projet_gallery_orientations'])) {
-		$raw_orient = stripslashes($_POST['_projet_gallery_orientations']);
+	if (isset($_POST['_projet_gallery_orientations']) && is_string($_POST['_projet_gallery_orientations'])) {
+		$raw_orient = wp_unslash($_POST['_projet_gallery_orientations']);
 		$decoded_orient = json_decode($raw_orient, true);
 		if (is_array($decoded_orient)) {
 			$allowed = ['auto', 'portrait', 'landscape', 'square'];
@@ -587,11 +587,19 @@ add_action('save_post_projet', function ($post_id) {
  * Traiter les vidéos de la galerie : générer poster + compresser si nécessaire
  */
 function zz_process_gallery_videos($gallery) {
-	$ffmpeg = '/home/zougzoug/.local/bin/ffmpeg';
-	if (!is_executable($ffmpeg)) {
-		$ffmpeg = trim(shell_exec('which ffmpeg 2>/dev/null'));
+	$paths = [
+		'/home/zougzoug/.local/bin/ffmpeg',
+		'/usr/bin/ffmpeg',
+		'/usr/local/bin/ffmpeg',
+	];
+	$ffmpeg = '';
+	foreach ($paths as $path) {
+		if (is_executable($path)) {
+			$ffmpeg = $path;
+			break;
+		}
 	}
-	if (empty($ffmpeg) || !is_executable($ffmpeg)) return;
+	if (empty($ffmpeg)) return;
 
 	foreach ($gallery as $att_id) {
 		$att_id = intval($att_id);

@@ -93,7 +93,19 @@ gsap.registerPlugin(ScrollTrigger);
   select.addEventListener('change', updatePlaceholder);
 })();
 
-// 5. Photos du bas : reveal au scroll
+// 5. Cloudflare Turnstile — injecter le widget si configure
+(function () {
+  if (typeof zzTurnstile === 'undefined' || !zzTurnstile.siteKey) return;
+  var wrap = document.querySelector('.cf-turnstile-wrap');
+  if (!wrap) return;
+  var div = document.createElement('div');
+  div.className = 'cf-turnstile';
+  div.setAttribute('data-sitekey', zzTurnstile.siteKey);
+  div.setAttribute('data-theme', 'light');
+  wrap.appendChild(div);
+})();
+
+// 6. Photos du bas : reveal au scroll
 document.querySelectorAll('.contact-photo').forEach(function (photo, i) {
   gsap.from(photo, {
     opacity: 0,

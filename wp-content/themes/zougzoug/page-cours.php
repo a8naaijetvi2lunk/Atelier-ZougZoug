@@ -49,7 +49,7 @@ $data = zz_get_data('cours');
 
       <div class="cours-offres-cta">
         <p class="cours-offres-note"><?php echo esc_html($data['privatisation']); ?></p>
-        <a href="mailto:atelierzougzoug@gmail.com" class="cta-button">M'écrire</a>
+        <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="cta-button">M'écrire</a>
       </div>
 
       <div class="cours-wecandoo-note">

@@ -115,7 +115,7 @@ function zz_seo_og_image_url( $value ) {
    B) Meta tags + Open Graph + Twitter Card  (wp_head, priority 1)
    ========================================================================= */
 
-add_action( 'wp_head', function () {
+add_action('wp_head', function () {
 	$page   = zz_seo_get_current_page_data();
 	$global = zz_seo_get_global();
 	$meta   = isset( $global['meta'] ) ? $global['meta'] : [];
@@ -194,13 +194,13 @@ add_action( 'wp_head', function () {
    C) Schema.org JSON-LD — Organization (all pages, wp_head priority 2)
    ========================================================================= */
 
-add_action( 'wp_head', function () {
+add_action('wp_head', function () {
 	$global  = zz_seo_get_global();
 	$footer  = isset( $global['footer'] ) ? $global['footer'] : [];
 	$email   = ! empty( $footer['email'] ) ? $footer['email'] : 'atelierzougzoug@gmail.com';
-	$sameAs  = [];
+	$same_as  = [];
 	if ( ! empty( $footer['instagram'] ) ) {
-		$sameAs[] = $footer['instagram'];
+		$same_as[] = $footer['instagram'];
 	}
 
 	$schema = [
@@ -225,7 +225,7 @@ add_action( 'wp_head', function () {
 		],
 		'telephone'      => '+33660199818',
 		'email'          => $email,
-		'sameAs'         => $sameAs,
+		'sameAs'         => $same_as,
 		'founder'        => [
 			'@type' => 'Person',
 			'@id'   => home_url( '/#person' ),
@@ -512,11 +512,11 @@ function zz_seo_parse_event_date( $month_str, $year ) {
 remove_action( 'wp_head', 'rel_canonical' );
 
 // Disable WP native sitemap (prevents wp-sitemap.xml from being generated)
-add_filter( 'wp_sitemaps_enabled', '__return_false' );
+add_filter('wp_sitemaps_enabled', '__return_false');
 
 // Intercept /sitemap.xml at 'init' before WP processes the sitemap query var
 // and issues a 301 redirect to /wp-sitemap.xml
-add_action( 'init', function () {
+add_action('init', function () {
 	$request_path = isset( $_SERVER['REQUEST_URI'] ) ? wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) : '';
 
 	if ( '/sitemap.xml' !== rtrim( $request_path, '/' ) ) {
@@ -572,7 +572,7 @@ add_action( 'init', function () {
    J) Robots.txt (robots_txt filter)
    ========================================================================= */
 
-add_filter( 'robots_txt', function ( $output, $public ) {
+add_filter('robots_txt', function ( $output, $public ) {
 	$sitemap_url = home_url( '/sitemap.xml' );
 
 	$robots  = "# Atelier ZougZoug — robots.txt\n";
@@ -607,7 +607,7 @@ add_filter( 'robots_txt', function ( $output, $public ) {
    K) Title override (document_title_parts + document_title_separator)
    ========================================================================= */
 
-add_filter( 'document_title_parts', function ( $title_parts ) {
+add_filter('document_title_parts', function ( $title_parts ) {
 	$page = zz_seo_get_current_page_data();
 
 	if ( $page && ! empty( $page['seo']['title'] ) ) {
@@ -617,7 +617,7 @@ add_filter( 'document_title_parts', function ( $title_parts ) {
 	return $title_parts;
 } );
 
-add_filter( 'document_title_separator', function ( $sep ) {
+add_filter('document_title_separator', function ( $sep ) {
 	$page = zz_seo_get_current_page_data();
 
 	if ( $page && ! empty( $page['seo']['title'] ) ) {
@@ -635,7 +635,7 @@ add_filter( 'document_title_separator', function ( $sep ) {
  * Regenere l'image OG mosaique quand un projet est publie, modifie ou supprime.
  * Debounce via transient (max 1 fois par 2 minutes) pour ne pas ralentir l'admin.
  */
-add_action( 'save_post_projet', function ( $post_id, $post ) {
+add_action('save_post_projet', function ( $post_id, $post ) {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
 	if ( wp_is_post_revision( $post_id ) ) return;
 
@@ -654,7 +654,7 @@ add_action( 'save_post_projet', function ( $post_id, $post ) {
 	zz_schedule_og_mosaic_regeneration();
 }, 10, 2 );
 
-add_action( 'trashed_post', function ( $post_id ) {
+add_action('trashed_post', function ( $post_id ) {
 	if ( get_post_type( $post_id ) !== 'projet' ) return;
 	zz_schedule_og_mosaic_regeneration();
 } );
@@ -673,7 +673,7 @@ function zz_schedule_og_mosaic_regeneration() {
 	}
 }
 
-add_action( 'zz_regenerate_og_mosaic', function () {
+add_action('zz_regenerate_og_mosaic', function () {
 	require_once get_template_directory() . '/inc/admin/generate-og-mosaic.php';
 	zz_generate_og_mosaic( false );
 } );
