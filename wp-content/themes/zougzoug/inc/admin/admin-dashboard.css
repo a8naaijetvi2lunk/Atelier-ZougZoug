@@ -1,0 +1,392 @@
+/* ============================================================
+   Atelier ZougZoug — Dashboard Custom
+   ============================================================ */
+
+/* Override le conteneur dashboard WP */
+#dashboard-widgets-wrap {
+  padding: 0;
+}
+
+#dashboard-widgets .postbox-container {
+  width: 100% !important;
+}
+
+#zz_dashboard {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+#zz_dashboard .postbox-header {
+  display: none !important;
+}
+
+#zz_dashboard .inside {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Masquer le titre "Tableau de bord" et screen options */
+.index-php .wrap > h1:first-child {
+  display: none;
+}
+
+.index-php #screen-meta-links {
+  display: none;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.zz-dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+}
+
+.zz-dash-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.zz-dash-logo {
+  flex-shrink: 0;
+}
+
+.zz-dash-greeting {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #1A1A1A;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.zz-dash-date {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.4);
+  margin: 2px 0 0;
+  text-transform: capitalize;
+}
+
+.zz-dash-view-site {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: rgba(26, 26, 26, 0.5);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  border-radius: 30px;
+  transition: all 0.2s ease;
+}
+
+.zz-dash-view-site:hover {
+  color: #1A1A1A;
+  border-color: #1A1A1A;
+}
+
+
+/* ============================================================
+   RACCOURCIS (4 CARDS)
+   ============================================================ */
+
+.zz-dash-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.zz-dash-shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 26, 26, 0.06);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.04);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.zz-dash-shortcut:hover {
+  border-color: rgba(26, 26, 26, 0.15);
+  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.08);
+  transform: translateY(-2px);
+}
+
+.zz-dash-shortcut-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(184, 149, 106, 0.1);
+  border-radius: 12px;
+  color: #B8956A;
+}
+
+.zz-dash-shortcut-label {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1A1A1A;
+  text-align: center;
+}
+
+
+/* ============================================================
+   GRID — Evenements + Projets
+   ============================================================ */
+
+.zz-dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.zz-dash-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 26, 26, 0.06);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.04);
+  overflow: hidden;
+}
+
+.zz-dash-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+}
+
+.zz-dash-card-title {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.zz-dash-card-link {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #B8956A;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.zz-dash-card-link:hover {
+  color: #1A1A1A;
+}
+
+
+/* --- Evenements --- */
+
+.zz-dash-events {
+  padding: 8px 0;
+}
+
+.zz-dash-event {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.zz-dash-event:hover {
+  background: rgba(184, 149, 106, 0.04);
+}
+
+.zz-dash-event-date {
+  width: 44px;
+  height: 44px;
+  background: #F8F6F3;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.zz-dash-event-day {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1A1A1A;
+  line-height: 1;
+}
+
+.zz-dash-event-month {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(26, 26, 26, 0.5);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.zz-dash-event-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.zz-dash-event-name {
+  display: block;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1A1A1A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zz-dash-event-lieu {
+  display: block;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.4);
+  margin-top: 2px;
+}
+
+.zz-dash-event-badge {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: #B8956A;
+  background: rgba(184, 149, 106, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+
+/* --- Projets --- */
+
+.zz-dash-projets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 16px 24px 24px;
+}
+
+.zz-dash-projet {
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.zz-dash-projet:hover {
+  transform: translateY(-2px);
+}
+
+.zz-dash-projet-thumb {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #F0EDE8;
+  margin-bottom: 8px;
+}
+
+.zz-dash-projet-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.zz-dash-projet-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(26, 26, 26, 0.2);
+}
+
+.zz-dash-projet-name {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #1A1A1A;
+}
+
+
+/* --- Empty state --- */
+
+.zz-dash-empty {
+  padding: 32px 24px;
+  text-align: center;
+  font-family: 'General Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.4);
+  line-height: 1.6;
+}
+
+.zz-dash-empty a {
+  color: #B8956A;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.zz-dash-empty a:hover {
+  color: #1A1A1A;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .zz-dash-shortcuts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 782px) {
+  .zz-dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .zz-dash-shortcuts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .zz-dash-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zz-dash-greeting {
+    font-size: 20px;
+  }
+}

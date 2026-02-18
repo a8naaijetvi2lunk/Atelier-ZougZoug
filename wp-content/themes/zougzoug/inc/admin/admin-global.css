@@ -1,0 +1,230 @@
+/* ============================================================
+   Atelier ZougZoug — Admin Global Styles
+   Font General Sans + ZZ color scheme
+   ============================================================ */
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('../../assets/fonts/GeneralSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('../../assets/fonts/GeneralSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('../../assets/fonts/GeneralSans-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* --- Base font override --- */
+body,
+#wpcontent,
+#wpbody-content,
+.wrap,
+.wp-heading-inline,
+h1, h2, h3, h4,
+.form-table th,
+.form-table td,
+input, select, textarea,
+button, .button {
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+
+/* --- Admin background --- */
+#wpcontent {
+  background: #F8F6F3;
+}
+
+#wpbody-content {
+  padding-bottom: 40px;
+}
+
+
+/* --- Admin bar ZZ logo --- */
+#wpadminbar .zz-admin-bar-logo > .ab-item {
+  padding: 0 8px !important;
+}
+
+#wpadminbar .zz-admin-bar-logo svg {
+  color: #F0EDE8;
+  transition: color 0.2s ease;
+}
+
+#wpadminbar .zz-admin-bar-logo:hover svg {
+  color: #FFFFFF;
+}
+
+
+/* --- Buttons --- */
+.wrap .page-title-action,
+.button-primary {
+  border-radius: 30px !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  padding: 6px 20px !important;
+  transition: all 0.2s ease !important;
+}
+
+.button-primary {
+  background: #1A1A1A !important;
+  border-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.button-primary:hover,
+.button-primary:focus {
+  background: #333 !important;
+  border-color: #333 !important;
+}
+
+.wrap .page-title-action {
+  background: transparent !important;
+  border: 1px solid rgba(26, 26, 26, 0.2) !important;
+  color: #1A1A1A !important;
+}
+
+.wrap .page-title-action:hover {
+  border-color: #1A1A1A !important;
+}
+
+
+/* --- Cards style for post list --- */
+.wp-list-table {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 26, 26, 0.06);
+}
+
+.wp-list-table thead th {
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+  color: rgba(26, 26, 26, 0.5);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wp-list-table tbody tr {
+  background: #FFFFFF;
+}
+
+.wp-list-table tbody tr:hover {
+  background: #FAFAF8;
+}
+
+
+/* --- Admin menu left sidebar tweaks --- */
+#adminmenu,
+#adminmenu .wp-submenu,
+#adminmenuback,
+#adminmenuwrap {
+  background: #1A1A1A;
+}
+
+#adminmenu a {
+  font-family: 'General Sans', sans-serif;
+  font-size: 13px;
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu {
+  background: #111;
+}
+
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+  background: #B8956A !important;
+  color: #FFFFFF;
+}
+
+#adminmenu .wp-submenu a:hover,
+#adminmenu .wp-submenu a:focus {
+  color: #B8956A !important;
+}
+
+#adminmenu div.separator {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+#adminmenu li a:focus,
+#adminmenu li a:hover {
+  color: #FFFFFF;
+}
+
+/* Collapse button */
+#collapse-menu {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#collapse-menu:hover {
+  color: #FFFFFF;
+}
+
+
+/* --- Form fields --- */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="date"],
+textarea,
+select {
+  border: 1px solid rgba(26, 26, 26, 0.15) !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #B8956A !important;
+  box-shadow: 0 0 0 1px #B8956A !important;
+  outline: none !important;
+}
+
+
+/* --- Postbox / Meta boxes --- */
+.postbox {
+  border: 1px solid rgba(26, 26, 26, 0.06) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.04) !important;
+}
+
+.postbox .hndle {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06) !important;
+  font-weight: 500 !important;
+}
+
+
+/* --- Screen title --- */
+.wrap h1,
+.wrap .wp-heading-inline {
+  font-weight: 500;
+  color: #1A1A1A;
+}
