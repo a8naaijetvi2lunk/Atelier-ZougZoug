@@ -1,0 +1,347 @@
+/* ============================================================
+   Atelier ZougZoug — Page A propos
+   Hero fixe + blocs diptyques qui se recouvrent au scroll
+   Chaque bloc est pinne, le suivant passe par-dessus
+   ============================================================ */
+
+
+/* ============================================================
+   HERO — Portrait NB + Intro sur fond terre cuite
+   Fixed en fond, le premier bloc passe par-dessus
+   ============================================================ */
+
+.about-hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 1;
+}
+
+.about-hero-half {
+  width: 50%;
+  height: 100%;
+}
+
+.about-hero-visual {
+  overflow: hidden;
+}
+
+.about-hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about-hero-content {
+  background: #B8956A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 80px;
+  color: #FFFFFF;
+}
+
+.about-label {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 30px;
+}
+
+.about-hero-title {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin-bottom: 30px;
+}
+
+.about-hero-text {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 480px;
+}
+
+.about-hero-spacer {
+  height: 100vh;
+  position: relative;
+}
+
+
+/* ============================================================
+   BLOCS DIPTYQUES — Chaque bloc est pinne (sticky)
+   Le suivant glisse par-dessus au scroll
+   ============================================================ */
+
+.about-sections {
+  position: relative;
+  z-index: 2;
+  background: #FFFFFF;
+}
+
+.about-block {
+  display: flex;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.about-block:nth-child(odd) {
+  background: #FFFFFF;
+}
+
+.about-block:nth-child(even) {
+  background: #F8F6F3;
+}
+
+.about-block:nth-child(1) { z-index: 1; }
+.about-block:nth-child(2) { z-index: 2; }
+.about-block:nth-child(3) { z-index: 3; }
+
+.about-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.about-block:first-child::before {
+  display: none;
+}
+
+.about-half {
+  width: 50%;
+  height: 100%;
+}
+
+.about-half--visual {
+  overflow: hidden;
+  position: relative;
+}
+
+.about-half--visual img {
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  position: absolute;
+  top: -15%;
+  left: 0;
+  will-change: transform;
+}
+
+.about-half--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  max-width: 720px;
+}
+
+.about-block--reverse {
+  flex-direction: row-reverse;
+}
+
+.about-block--reverse .about-half--content {
+  margin-left: auto;
+}
+
+.about-tagline {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.5;
+  color: #1A1A1A;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.about-text {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(26, 26, 26, 0.75);
+  margin-bottom: 18px;
+}
+
+.about-text:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-half--content .cta-button {
+  margin-top: 40px;
+  align-self: flex-start;
+}
+
+
+/* ============================================================
+   AFTER-SECTIONS SPACER
+   ============================================================ */
+
+.about-sections-spacer {
+  display: none;
+}
+
+/* CTA final et footer passent par-dessus le hero fixe et les blocs sticky */
+.cta-final {
+  position: relative;
+  z-index: 10;
+}
+
+.site-footer {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* ============================================================
+   RESPONSIVE — Tablet (max-width: 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .about-hero-content {
+    padding: 0 50px;
+  }
+
+  .about-hero-title {
+    font-size: 42px;
+  }
+
+  .about-half--content {
+    padding: 60px 50px;
+  }
+
+  .about-tagline {
+    font-size: 24px;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile (max-width: 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .about-hero {
+    flex-direction: column;
+  }
+
+  .about-hero-half {
+    width: 100%;
+    height: 50%;
+  }
+
+  .about-hero-content {
+    padding: 40px 24px;
+    justify-content: flex-start;
+    padding-top: 30px;
+  }
+
+  .about-hero-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .about-hero-text {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .about-label {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+
+  .about-block {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+    position: relative;
+    top: auto;
+  }
+
+  .about-block--reverse {
+    flex-direction: column;
+  }
+
+  .about-block::before {
+    display: none;
+  }
+
+  .about-half {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-half--visual {
+    height: 50vh;
+  }
+
+  .about-half--visual img {
+    height: 130%;
+    top: -15%;
+  }
+
+  .about-half--content {
+    padding: 50px 24px;
+    max-width: 100%;
+  }
+
+  .about-block--reverse .about-half--content {
+    margin-left: 0;
+  }
+
+  .about-tagline {
+    font-size: 22px;
+  }
+
+  .about-text {
+    font-size: 15px;
+  }
+
+  .about-sections-spacer {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Petit mobile (max-width: 400px)
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .about-hero-title {
+    font-size: 28px;
+  }
+
+  .about-hero-text {
+    font-size: 14px;
+  }
+
+  .about-tagline {
+    font-size: 20px;
+  }
+
+  .about-half--visual {
+    height: 40vh;
+  }
+}

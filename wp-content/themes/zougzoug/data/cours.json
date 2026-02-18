@@ -1,50 +1,56 @@
 {
   "hero": {
+    "label": "Atelier",
     "title": "Cours de céramique",
-    "image": "cours-hero.webp",
-    "image_alt": "Atelier de cours de céramique"
+    "image": "DSCF6050.webp",
+    "image_alt": "Mains modelant une pièce d'argile noire à l'atelier ZougZoug"
   },
   "intro": {
-    "accroche": "Apprenez à créer de vos mains",
-    "text": "Charlotte propose des ateliers de céramique dans son studio de Brioude. Tournage, modelage, émaillage : découvrez les gestes et les matières de la poterie artisanale dans un cadre chaleureux et bienveillant."
+    "accroche": "Découvrir la céramique, les mains dans la terre, au cœur de l'Auvergne.",
+    "text": "Charlotte vous accueille dans son atelier à Brioude pour des initiations au tournage et au modelage. Seul, en duo ou en petit groupe — un moment hors du temps, guidé pas à pas."
   },
+  "offres_label": "Les ateliers",
+  "offres_title": "Trouvez l'atelier qui vous correspond.",
   "offres": [
     {
       "nom": "Duo tournage",
-      "description": "Un moment privilégié à deux pour découvrir le tour de potier. Chacun repart avec sa pièce émaillée et cuite.",
-      "prix": "130€",
-      "infos": "2 personnes max · 2h30"
+      "description": "Venez à deux découvrir le tour de potier. Un moment complice, les mains dans l'argile.",
+      "prix": 130,
+      "infos": ["2 personnes max"]
     },
     {
       "nom": "Initiation tournage",
-      "description": "Découverte du tour de potier : centrage, montée, mise en forme. Repartez avec votre création unique.",
-      "prix": "70€",
-      "infos": "3 personnes max · 2h30"
+      "description": "Découvrez les gestes du tournage et repartez avec votre création.",
+      "prix": 70,
+      "infos": ["2h30", "3 personnes max"]
     },
     {
       "nom": "Initiation modelage",
-      "description": "Apprenez les techniques de modelage : plaque, colombin, estampage. Créez un bol, une tasse ou un vide-poche.",
-      "prix": "55€",
-      "infos": "4 personnes max · 2h"
+      "description": "Apprenez à modeler l'argile à la main : plaques, colombins, empreintes végétales.",
+      "prix": 55,
+      "infos": ["2h", "4 personnes max"]
     },
     {
       "nom": "Tournage & modelage",
-      "description": "Un atelier complet pour explorer les deux techniques fondamentales de la céramique.",
-      "prix": "65€",
-      "infos": "6 personnes max · 2h30"
+      "description": "Un atelier complet pour explorer les deux techniques de la céramique.",
+      "prix": 65,
+      "infos": ["2h30", "6 personnes max"]
     }
   ],
-  "privatisation": {
-    "text": "Tous les ateliers sont privatisables pour des groupes, EVJF, team building ou anniversaires.",
-    "cta": "Me contacter pour privatiser"
-  },
+  "privatisation": "Privatisation, groupe, évènement ?",
   "wecandoo": {
-    "text": "Retrouvez également mes ateliers sur WeCanDoo.",
-    "url": "https://wecandoo.fr"
+    "text": "Vous pouvez aussi réserver un cours découverte sur",
+    "link_text": "WeCanDoo",
+    "url": "https://wecandoo.fr/"
   },
   "galerie": [
-    { "src": "cours-galerie-1.webp", "alt": "Atelier de tournage en cours" },
-    { "src": "cours-galerie-2.webp", "alt": "Pièces réalisées par les élèves" },
-    { "src": "cours-galerie-3.webp", "alt": "Détail mains sur le tour" }
-  ]
+    { "src": "IMG_6861.webp", "alt": "L'atelier de céramique avec tours de potier, lumière chaleureuse" },
+    { "src": "IMG_3181.webp", "alt": "Modelage avec empreintes de fleurs et d'épis sur argile noire" },
+    { "src": "IMG_3162.webp", "alt": "Plan de travail avec outils, plantes et argile — prêt pour un cours" }
+  ],
+  "cta": {
+    "text": "Envie de mettre les mains dans la terre ?\nRéservez votre atelier.",
+    "button": "Me contacter",
+    "url": "mailto:atelierzougzoug@gmail.com"
+  }
 }

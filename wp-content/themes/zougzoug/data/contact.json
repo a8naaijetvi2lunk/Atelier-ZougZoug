@@ -1,16 +1,28 @@
 {
+  "form": {
+    "label": "Contact",
+    "title": "Vous avez un projet ?\nParlons-en."
+  },
   "info": {
+    "label": "L'atelier",
     "name": "Charlotte Auroux",
     "studio": "Atelier ZougZoug",
     "email": "atelierzougzoug@gmail.com",
     "phone": "06 60 19 98 18",
+    "phone_link": "+33660199818",
     "address": "6 rue de la Terrasse\n43100 Brioude",
     "instagram": "https://www.instagram.com/atelier_zougzoug/",
-    "photo": "charlotte-atelier.webp",
-    "photo_alt": "Charlotte dans son atelier"
+    "instagram_handle": "@atelier_zougzoug",
+    "photo": "contact-hero.webp",
+    "photo_alt": "Jeux d'ombres sur céramique, atelier ZougZoug"
   },
-  "photos_bande": [
-    { "src": "contact-bande-1.webp", "alt": "Détail céramique atelier" },
-    { "src": "contact-bande-2.webp", "alt": "Pièces en cours de séchage" }
-  ]
+  "photos": [
+    { "src": "contact-atelier.webp", "alt": "Pièces en céramique blanche, lumière naturelle dans l'atelier" },
+    { "src": "contact-boutique.webp", "alt": "Intérieur de l'atelier-boutique ZougZoug" }
+  ],
+  "cta": {
+    "text": "Un projet sur mesure en céramique ?\nParlons-en.",
+    "button": "Écrire un email",
+    "url": "mailto:atelierzougzoug@gmail.com"
+  }
 }

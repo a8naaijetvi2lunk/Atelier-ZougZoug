@@ -1,0 +1,384 @@
+/* ============================================================
+   Atelier ZougZoug — Page Revendeurs & Evenements
+   Hero titre + points de vente + bande photos + agenda
+   ============================================================ */
+
+
+/* ============================================================
+   HERO — Titre centre sur fond beige
+   ============================================================ */
+
+.rev-hero {
+  background: #F8F6F3;
+  padding: 180px 40px 100px;
+  text-align: center;
+}
+
+.rev-hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.rev-hero-title {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin-bottom: 24px;
+}
+
+.rev-hero-text {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.6);
+}
+
+
+/* ============================================================
+   POINTS DE VENTE — 3 cards (atelier + 2 boutiques)
+   ============================================================ */
+
+.rev-lieux {
+  background: #FFFFFF;
+  padding: 100px 40px;
+}
+
+.rev-lieux-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.rev-lieux-title {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin-bottom: 50px;
+}
+
+.rev-lieux-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.rev-lieu-card {
+  background: #F8F6F3;
+  border-radius: 6px;
+  padding: 36px 28px;
+  transition: transform 0.3s ease;
+}
+
+.rev-lieu-card:hover {
+  transform: translateY(-4px);
+}
+
+.rev-lieu-type {
+  display: inline-block;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #B8956A;
+  margin-bottom: 16px;
+}
+
+.rev-lieu-nom {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+}
+
+.rev-lieu-adresse {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(26, 26, 26, 0.6);
+  margin-bottom: 8px;
+}
+
+.rev-lieu-note {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(26, 26, 26, 0.4);
+  margin-bottom: 16px;
+}
+
+.rev-lieu-link {
+  display: inline-block;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #B8956A;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.rev-lieu-link:hover {
+  color: #1A1A1A;
+}
+
+
+/* ============================================================
+   BANDE PHOTOS — 2 photos cote a cote
+   ============================================================ */
+
+.rev-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.rev-photo {
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+
+.rev-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.rev-photo:hover img {
+  transform: scale(1.04);
+}
+
+
+/* ============================================================
+   AGENDA — Timeline d'evenements
+   ============================================================ */
+
+.rev-agenda {
+  background: #FFFFFF;
+  padding: 100px 40px;
+}
+
+.rev-agenda-inner {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.rev-agenda-title {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin-bottom: 50px;
+}
+
+.rev-agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rev-event {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.rev-event:first-child {
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.rev-event-date {
+  flex-shrink: 0;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rev-event-month {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #B8956A;
+  line-height: 1.2;
+}
+
+.rev-event-year {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.rev-event-content {
+  flex: 1;
+}
+
+.rev-event-nom {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #1A1A1A;
+  margin-bottom: 6px;
+}
+
+.rev-event-details {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.6);
+  margin-bottom: 4px;
+}
+
+.rev-event-lieu {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.rev-agenda-note {
+  margin-top: 40px;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.rev-agenda-note a {
+  color: #B8956A;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.rev-agenda-note a:hover {
+  color: #1A1A1A;
+}
+
+.rev-expo {
+  margin-top: 60px;
+  padding-top: 40px;
+}
+
+.rev-event--past {
+  opacity: 0.5;
+}
+
+.rev-event--past .rev-event-month {
+  color: rgba(26, 26, 26, 0.4);
+}
+
+
+/* ============================================================
+   RESPONSIVE — Tablet (max-width: 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .rev-hero-title {
+    font-size: 40px;
+  }
+
+  .rev-lieux-title,
+  .rev-agenda-title {
+    font-size: 30px;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile (max-width: 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .rev-hero {
+    padding: 140px 24px 60px;
+  }
+
+  .rev-hero-title {
+    font-size: 32px;
+  }
+
+  .rev-hero-text {
+    font-size: 16px;
+  }
+
+  .rev-lieux {
+    padding: 60px 24px;
+  }
+
+  .rev-lieux-title {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+
+  .rev-lieux-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .rev-lieu-card {
+    padding: 28px 24px;
+  }
+
+  .rev-photos {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .rev-photo {
+    aspect-ratio: 16 / 10;
+  }
+
+  .rev-agenda {
+    padding: 60px 24px;
+  }
+
+  .rev-agenda-title {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+
+  .rev-event {
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  .rev-event-date {
+    width: 60px;
+  }
+
+  .rev-event-nom {
+    font-size: 17px;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Petit mobile (max-width: 400px)
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .rev-hero-title {
+    font-size: 26px;
+  }
+
+  .rev-event-nom {
+    font-size: 16px;
+  }
+}

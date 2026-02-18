@@ -52,11 +52,16 @@ add_action('wp_enqueue_scripts', function () {
 		wp_enqueue_script('zz-gsap', $uri . '/assets/js/vendor/gsap.min.js', [], '3', true);
 		wp_enqueue_script('zz-scrolltrigger', $uri . '/assets/js/vendor/ScrollTrigger.min.js', ['zz-gsap'], '3', true);
 		wp_enqueue_script('zz-projets', $uri . '/assets/js/projets.js', ['zz-scrolltrigger', 'zz-main'], $ver, true);
+		wp_localize_script('zz-projets', 'zzProjets', [
+			'imgBase' => $uri . '/assets/img/',
+		]);
 	}
 
 	// Contact
 	if (is_page('contact')) {
-		wp_enqueue_script('zz-contact', $uri . '/assets/js/contact.js', ['zz-main'], $ver, true);
+		wp_enqueue_script('zz-gsap', $uri . '/assets/js/vendor/gsap.min.js', [], '3', true);
+		wp_enqueue_script('zz-scrolltrigger', $uri . '/assets/js/vendor/ScrollTrigger.min.js', ['zz-gsap'], '3', true);
+		wp_enqueue_script('zz-contact', $uri . '/assets/js/contact.js', ['zz-scrolltrigger', 'zz-main'], $ver, true);
 	}
 
 	// Cours

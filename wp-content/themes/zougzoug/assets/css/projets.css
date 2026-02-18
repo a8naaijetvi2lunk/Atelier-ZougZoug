@@ -1,0 +1,487 @@
+/* ============================================================
+   Atelier ZougZoug — Page Projets & Collaborations
+   Grille masonry + lightbox galerie plein ecran
+   ============================================================ */
+
+
+/* ============================================================
+   HERO PROJETS — Titre + filtres categorie
+   ============================================================ */
+
+.projets-hero {
+  background: #F8F6F3;
+  padding: 160px 40px 80px;
+  text-align: center;
+}
+
+.projets-hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.projets-title {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin-bottom: 20px;
+}
+
+.projets-intro {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(26, 26, 26, 0.6);
+  margin-bottom: 50px;
+}
+
+
+/* --- Filtres pills --- */
+.projets-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(26, 26, 26, 0.6);
+  background: transparent;
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  border-radius: 30px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: #1A1A1A;
+  border-color: #1A1A1A;
+}
+
+.filter-btn.is-active {
+  background: #1A1A1A;
+  color: #FFFFFF;
+  border-color: #1A1A1A;
+}
+
+
+/* ============================================================
+   GRILLE DE PROJETS — Masonry 3 colonnes
+   ============================================================ */
+
+.projets-grid-section {
+  background: #FFFFFF;
+  padding: 60px 40px 100px;
+}
+
+.projets-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.projet-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #F0EDE8;
+  aspect-ratio: 1;
+}
+
+.projet-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.projet-card:hover img {
+  transform: scale(1.04);
+}
+
+.projet-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 24px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.projet-card:hover .projet-card-overlay {
+  opacity: 1;
+}
+
+.projet-card-name {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.projet-card-cat {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.projet-card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.projet-card-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: #FFFFFF;
+  margin-left: 2px;
+}
+
+.projet-card.is-hidden {
+  display: none;
+}
+
+
+/* ============================================================
+   LIGHTBOX — Sidebar description + Galerie
+   ============================================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #FFFFFF;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1010;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(6px);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.lightbox-close:hover {
+  border-color: rgba(26, 26, 26, 0.4);
+  background: rgba(255, 255, 255, 1);
+}
+
+.lightbox-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: #1A1A1A;
+}
+
+.lightbox-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.lightbox-sidebar {
+  width: 380px;
+  flex-shrink: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 60px 40px 60px;
+  background: #F8F6F3;
+  border-right: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.lightbox-sidebar-name {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  color: #1A1A1A;
+  margin-bottom: 6px;
+}
+
+.lightbox-sidebar-cat {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #B8956A;
+  margin-bottom: 36px;
+}
+
+.lightbox-detail {
+  margin-bottom: 24px;
+}
+
+.lightbox-detail-label {
+  display: block;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(26, 26, 26, 0.4);
+  margin-bottom: 8px;
+}
+
+.lightbox-detail-value {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(26, 26, 26, 0.8);
+}
+
+.lightbox-detail-value a {
+  color: #B8956A;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.lightbox-detail-value a:hover {
+  color: #1A1A1A;
+}
+
+.lightbox-sidebar-text {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.6);
+}
+
+.lightbox-placeholder {
+  margin-top: 24px;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(26, 26, 26, 0.3);
+  line-height: 1.6;
+}
+
+.lightbox-gallery {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: min-content;
+  gap: 10px;
+  align-content: start;
+}
+
+.lightbox-media {
+  border-radius: 3px;
+  overflow: hidden;
+  background: #F0EDE8;
+}
+
+.lightbox-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lightbox-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lightbox-media--wide {
+  grid-column: span 3;
+}
+
+
+/* ============================================================
+   RESPONSIVE — Tablet (max-width: 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .projets-title {
+    font-size: 42px;
+  }
+
+  .projets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile (max-width: 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .projets-hero {
+    padding: 120px 24px 50px;
+  }
+
+  .projets-title {
+    font-size: 32px;
+  }
+
+  .projets-intro {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .projets-filters {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    font-size: 11px;
+    padding: 8px 16px;
+  }
+
+  .projets-grid-section {
+    padding: 30px 16px 60px;
+  }
+
+  .projets-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .projet-card-overlay {
+    opacity: 1;
+    padding: 20px 16px;
+  }
+
+  .projet-card-name {
+    font-size: 15px;
+  }
+
+  .projet-card-cat {
+    font-size: 11px;
+  }
+
+  .projet-card-badge {
+    width: 28px;
+    height: 28px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .projet-card-badge svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .lightbox {
+    overflow-y: auto;
+  }
+
+  .lightbox-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .lightbox-sidebar {
+    width: 100%;
+    height: auto;
+    padding: 50px 24px 32px;
+    border-right: none;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  }
+
+  .lightbox-sidebar-name {
+    font-size: 22px;
+  }
+
+  .lightbox-gallery {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .lightbox-close {
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .lightbox-close svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .lightbox-media--wide {
+    grid-column: span 2;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Petit mobile (max-width: 400px)
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .projets-title {
+    font-size: 26px;
+  }
+
+  .projets-grid {
+    grid-template-columns: 1fr;
+  }
+}

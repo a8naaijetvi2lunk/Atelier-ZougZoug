@@ -12,11 +12,11 @@
   // --- Header : transparent → blanc au scroll ---
   (function () {
     var header = document.querySelector('.site-header');
-    var spacer = document.querySelector('.hero-spacer');
-    var hero = document.querySelector('.hero');
+    var spacer = document.querySelector('.hero-spacer') || document.querySelector('.about-hero-spacer');
+    var hero = document.querySelector('.hero') || document.querySelector('.about-hero');
     var ticking = false;
 
-    // Si pas de hero spacer (pages autres que l'accueil), forcer le header scrolled
+    // Si pas de hero spacer (pages autres que l'accueil et à propos), forcer le header scrolled
     if (!spacer) {
       if (header) header.classList.add('scrolled');
       return;

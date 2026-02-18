@@ -1,0 +1,338 @@
+/* ============================================================
+   Atelier ZougZoug — Page Contact
+   Hero diptyque photo + infos, bande photos en dessous
+   ============================================================ */
+
+
+/* ============================================================
+   HERO CONTACT — Diptyque 50/50
+   ============================================================ */
+
+.contact-hero {
+  display: flex;
+  min-height: 100vh;
+}
+
+.contact-half {
+  width: 50%;
+  min-height: 100vh;
+}
+
+.contact-half--visual {
+  overflow: hidden;
+  position: relative;
+}
+
+.contact-half--visual img {
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.contact-half--info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  background: #FFFFFF;
+}
+
+.contact-name {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.1;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+}
+
+.contact-studio {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(26, 26, 26, 0.4);
+  margin-bottom: 50px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.contact-address {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(26, 26, 26, 0.75);
+}
+
+.contact-email,
+.contact-tel {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-email:hover,
+.contact-tel:hover {
+  color: #B8956A;
+}
+
+.contact-social {
+  padding-top: 10px;
+}
+
+.contact-insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-insta:hover {
+  color: #1A1A1A;
+}
+
+.contact-insta svg {
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   FORMULAIRE DE CONTACT
+   ============================================================ */
+
+.contact-form-section {
+  background: #F8F6F3;
+  padding: 160px 0 100px;
+}
+
+.contact-form-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.contact-form-header {
+  margin-bottom: 50px;
+}
+
+.contact-form-title {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.3;
+  color: #1A1A1A;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form-row {
+  display: flex;
+  gap: 24px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  border-radius: 4px;
+  padding: 14px 16px;
+  transition: border-color 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #B8956A;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(26, 26, 26, 0.3);
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-form .cta-button {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+
+/* ============================================================
+   BANDE PHOTOS — 2 images cote a cote
+   ============================================================ */
+
+.contact-photos {
+  display: flex;
+}
+
+.contact-photo {
+  width: 50%;
+  height: 50vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.contact-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ============================================================
+   RESPONSIVE — Tablet (max-width: 1024px)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .contact-half--info {
+    padding: 60px 50px;
+  }
+
+  .contact-name {
+    font-size: 40px;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Mobile (max-width: 768px)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .contact-hero {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .contact-half {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .contact-half--visual {
+    height: 50vh;
+    position: relative;
+  }
+
+  .contact-half--info {
+    padding: 50px 24px;
+  }
+
+  .contact-name {
+    font-size: 32px;
+  }
+
+  .contact-studio {
+    font-size: 11px;
+    margin-bottom: 36px;
+  }
+
+  .contact-form-section {
+    padding: 60px 0;
+  }
+
+  .contact-form-inner {
+    padding: 0 24px;
+  }
+
+  .contact-form-title {
+    font-size: 28px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .contact-photos {
+    flex-direction: column;
+  }
+
+  .contact-photo {
+    width: 100%;
+    height: 40vh;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE — Petit mobile (max-width: 400px)
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .contact-name {
+    font-size: 28px;
+  }
+
+  .contact-half--visual {
+    height: 40vh;
+  }
+
+  .contact-photo {
+    height: 30vh;
+  }
+}

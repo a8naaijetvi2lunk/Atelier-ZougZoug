@@ -1,54 +1,78 @@
 {
   "hero": {
-    "title": "Revendeurs & Évènements",
-    "text": "Retrouvez les créations de l'Atelier ZougZoug chez nos revendeurs partenaires et lors de nos évènements."
+    "label": "Revendeurs & Évènements",
+    "title": "Retrouvez les pièces de l'atelier\nprès de chez vous.",
+    "text": "En boutique, sur les marchés ou lors d'expositions."
   },
+  "lieux_label": "Points de vente",
+  "lieux_title": "Où trouver les céramiques.",
   "lieux": [
     {
+      "type": "Atelier",
       "nom": "Atelier ZougZoug",
-      "adresse": "6 rue de la Terrasse, 43100 Brioude",
-      "description": "Venez découvrir les collections directement à l'atelier, sur rendez-vous.",
-      "image": "lieu-atelier.webp",
-      "image_alt": "Façade de l'atelier ZougZoug à Brioude"
+      "adresse": "6 rue de la Terrasse\n43100 Brioude",
+      "note": "Sur rendez-vous",
+      "link": "mailto:atelierzougzoug@gmail.com",
+      "link_text": "Prendre rendez-vous",
+      "is_atelier": true
     },
     {
+      "type": "Boutique",
       "nom": "Drôles de Zèbres",
-      "adresse": "Clermont-Ferrand",
-      "description": "Concept store design et artisanat. Sélection de pièces en grès et porcelaine.",
-      "image": "lieu-zebres.webp",
-      "image_alt": "Boutique Drôles de Zèbres"
+      "adresse": "10 rue Terrasse\nClermont-Ferrand (63)",
+      "is_atelier": false
     },
     {
+      "type": "Boutique",
       "nom": "Artizon",
-      "adresse": "Brioude",
-      "description": "Galerie d'artisanat local regroupant les meilleurs créateurs de la région.",
-      "image": "lieu-artizon.webp",
-      "image_alt": "Galerie Artizon à Brioude"
+      "adresse": "36 boulevard du Nord\nCraponne-sur-Arzon (43)",
+      "is_atelier": false
     }
   ],
-  "photos_bande": [
-    { "src": "revendeurs-bande-1.webp", "alt": "Céramiques en boutique" },
-    { "src": "revendeurs-bande-2.webp", "alt": "Stand marché de créateurs" }
+  "photos": [
+    { "src": "WIP-5.webp", "alt": "Main posant une pièce en céramique sur une étagère d'exposition" },
+    { "src": "WIP-6.webp", "alt": "Charlotte derrière une vitrine, vase en céramique au premier plan" }
   ],
-  "evenements": {
-    "a_venir": [
-      {
-        "nom": "Marché de Noël de Brioude",
-        "date": "Décembre 2026",
-        "lieu": "Place de la Halle, Brioude"
-      }
-    ],
-    "passes": [
-      {
-        "nom": "Journées Européennes des Métiers d'Art",
-        "date": "Avril 2025",
-        "lieu": "Brioude"
-      },
-      {
-        "nom": "Salon Céramique Contemporaine",
-        "date": "Mars 2025",
-        "lieu": "Lyon"
-      }
-    ]
+  "agenda_label": "Agenda",
+  "agenda_title": "Marchés, salons & expositions.",
+  "evenements": [
+    {
+      "month": "Mai",
+      "year": "2026",
+      "nom": "Galerie éphémère avec Zanatana Bourdat",
+      "details": "18 — 31 mai",
+      "lieu": "Place du Terrail, Clermont-Ferrand (63)"
+    },
+    {
+      "month": "Juin",
+      "year": "2026",
+      "nom": "Marché de potiers de Gouttières",
+      "details": "13 — 14 juin",
+      "lieu": "Gouttières (63)"
+    },
+    {
+      "month": "Sept.",
+      "year": "2026",
+      "nom": "Biennale des Métiers d'art de Brioude",
+      "details": null,
+      "lieu": "Brioude (43)"
+    }
+  ],
+  "agenda_note": "Calendrier de l'été à compléter — suivez l'actualité sur",
+  "agenda_note_link": "Instagram",
+  "agenda_note_url": "https://www.instagram.com/atelier_zougzoug/",
+  "expos_label": "Expositions",
+  "expos": [
+    {
+      "month": "Nov.",
+      "year": "2025",
+      "nom": "Vitrine 1 mois / 1 artiste",
+      "lieu": "Librairie Les Volcans, Clermont-Ferrand"
+    }
+  ],
+  "cta": {
+    "text": "Vous souhaitez distribuer les pièces de l'atelier ?\nParlons-en.",
+    "button": "Me contacter",
+    "url": "mailto:atelierzougzoug@gmail.com"
   }
 }
