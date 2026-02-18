@@ -178,14 +178,17 @@ function escapeAttr(str) {
   function layoutMasonry() {
     var cols = isMobile ? 2 : 3;
     var gap = isMobile ? 8 : 10;
-    var items = lbGrid.querySelectorAll('.lightbox-media');
+
+    // Get or create the inner masonry wrapper
+    var masonryWrap = lbGrid.querySelector('.lightbox-masonry');
+    if (!masonryWrap) return;
+
+    var items = masonryWrap.querySelectorAll('.lightbox-media');
     if (!items.length) return;
 
-    // Reset grid CSS for manual positioning
-    lbGrid.style.display = 'block';
-    lbGrid.style.position = 'relative';
+    masonryWrap.style.position = 'relative';
 
-    var containerWidth = lbGrid.clientWidth - (gap * 2); // padding
+    var containerWidth = lbGrid.clientWidth - (gap * 2);
     var colWidth = (containerWidth - gap * (cols - 1)) / cols;
     var colHeights = [];
     for (var c = 0; c < cols; c++) colHeights.push(0);
@@ -195,19 +198,16 @@ function escapeAttr(str) {
       var isWide = item.classList.contains('lightbox-media--wide');
 
       if (isWide) {
-        // Wide items (videos) span full width
         var maxHeight = Math.max.apply(null, colHeights);
         item.style.position = 'absolute';
         item.style.left = gap + 'px';
         item.style.top = maxHeight + gap + 'px';
         item.style.width = containerWidth + 'px';
-        // Set all columns to same height
         var videoHeight = item.offsetHeight;
         for (var vc = 0; vc < cols; vc++) {
           colHeights[vc] = maxHeight + gap + videoHeight;
         }
       } else {
-        // Find shortest column
         var shortest = 0;
         for (var sc = 1; sc < cols; sc++) {
           if (colHeights[sc] < colHeights[shortest]) shortest = sc;
@@ -221,7 +221,6 @@ function escapeAttr(str) {
         item.style.top = y + 'px';
         item.style.width = colWidth + 'px';
 
-        // Get natural image ratio
         var img = item.querySelector('img');
         var itemHeight;
         if (img && img.naturalWidth && img.naturalHeight) {
@@ -234,9 +233,9 @@ function escapeAttr(str) {
       }
     }
 
-    // Set container height
+    // Set height on the inner wrapper, not the scroll container
     var totalHeight = Math.max.apply(null, colHeights) + gap;
-    lbGrid.style.height = totalHeight + 'px';
+    masonryWrap.style.height = totalHeight + 'px';
   }
 
   function openLightbox(index) {
@@ -245,8 +244,9 @@ function escapeAttr(str) {
 
     lbSidebar.innerHTML = buildSidebar(p);
 
-    // Build media elements
-    var html = '';
+    // Build media elements inside a masonry wrapper
+    var html = '<div class="lightbox-loader"><div class="lightbox-loader-spinner"></div></div>';
+    html += '<div class="lightbox-masonry">';
     for (var i = 0; i < p.medias.length; i++) {
       var file = p.medias[i];
       var src = mediaPath(file);
@@ -256,11 +256,14 @@ function escapeAttr(str) {
           + '</div>';
       } else {
         html += '<div class="lightbox-media">'
-          + '<img src="' + src + '" alt="' + escapeAttr(p.name) + '" loading="lazy">'
+          + '<img src="' + src + '" alt="' + escapeAttr(p.name) + '">'
           + '</div>';
       }
     }
+    html += '</div>';
     lbGrid.innerHTML = html;
+    lbGrid.classList.add('is-loading');
+    lbGrid.classList.remove('is-ready');
 
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
@@ -273,16 +276,28 @@ function escapeAttr(str) {
     var images = lbGrid.querySelectorAll('img');
     var loaded = 0;
     var total = images.length;
+    var layoutDone = false;
+
+    function finishLayout() {
+      if (layoutDone) return;
+      layoutDone = true;
+      layoutMasonry();
+      // Remove spinner, reveal images
+      var loader = lbGrid.querySelector('.lightbox-loader');
+      if (loader) loader.remove();
+      lbGrid.classList.remove('is-loading');
+      lbGrid.classList.add('is-ready');
+    }
 
     if (total === 0) {
-      layoutMasonry();
+      finishLayout();
       return;
     }
 
     function onImageLoad() {
       loaded++;
       if (loaded >= total) {
-        layoutMasonry();
+        finishLayout();
       }
     }
 
@@ -295,8 +310,8 @@ function escapeAttr(str) {
       }
     }
 
-    // Fallback: layout after 2s even if images haven't loaded
-    setTimeout(layoutMasonry, 2000);
+    // Fallback: layout after 3s even if images haven't loaded
+    setTimeout(finishLayout, 3000);
   }
 
   function closeLightbox() {
@@ -309,10 +324,7 @@ function escapeAttr(str) {
       videos[i].pause();
     }
 
-    // Reset grid styles
-    lbGrid.style.display = '';
-    lbGrid.style.position = '';
-    lbGrid.style.height = '';
+    lbGrid.classList.remove('is-loading', 'is-ready');
   }
 
   document.getElementById('projets-grid').addEventListener('click', function (e) {

@@ -317,6 +317,44 @@
   position: relative;
 }
 
+/* Masonry inner wrapper */
+.lightbox-masonry {
+  position: relative;
+  min-height: 100%;
+}
+
+/* Masonry loading state — images hidden until layout is done */
+.lightbox-gallery.is-loading .lightbox-media {
+  opacity: 0;
+}
+
+.lightbox-gallery.is-ready .lightbox-media {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+/* Spinner while masonry calculates */
+.lightbox-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.lightbox-loader-spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(26, 26, 26, 0.08);
+  border-top-color: #B8956A;
+  border-radius: 50%;
+  animation: lightbox-spin 0.6s linear infinite;
+}
+
+@keyframes lightbox-spin {
+  to { transform: rotate(360deg); }
+}
+
 .lightbox-media {
   border-radius: 3px;
   overflow: hidden;
