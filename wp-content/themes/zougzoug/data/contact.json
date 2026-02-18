@@ -1,0 +1,16 @@
+{
+  "info": {
+    "name": "Charlotte Auroux",
+    "studio": "Atelier ZougZoug",
+    "email": "atelierzougzoug@gmail.com",
+    "phone": "06 60 19 98 18",
+    "address": "6 rue de la Terrasse\n43100 Brioude",
+    "instagram": "https://www.instagram.com/atelier_zougzoug/",
+    "photo": "charlotte-atelier.webp",
+    "photo_alt": "Charlotte dans son atelier"
+  },
+  "photos_bande": [
+    { "src": "contact-bande-1.webp", "alt": "Détail céramique atelier" },
+    { "src": "contact-bande-2.webp", "alt": "Pièces en cours de séchage" }
+  ]
+}

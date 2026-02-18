@@ -1,0 +1,71 @@
+{
+  "hero": {
+    "tagline": "La céramique comme langage commun\nentre design et architecture.",
+    "slides": [
+      { "left": "7773c8ee265a8201793c73b9a9d0ca70210f4ee2.webp", "right": "863126567bfcfdb621a42d72d4b513cb31b157a6.webp" },
+      { "left": "slide-tasses.webp", "right": "slide-trio.webp" },
+      { "left": "slide-assiette-table.webp", "right": "slide-pichet.webp" },
+      { "left": "slide-boites.webp", "right": "slide-img5253.webp" }
+    ]
+  },
+  "statement": {
+    "text": "Une poterie qui se vit, se touche, s'inscrit dans le temps et l'espace. Des pièces conçues pour un lieu, un usage, une atmosphère.",
+    "images": [
+      { "src": "parcours-boutique.webp", "alt": "Céramiques exposées en boutique" },
+      { "src": "parcours-luminaire.webp", "alt": "Luminaire céramique en situation" },
+      { "src": "parcours-vase.webp", "alt": "Vase en grès" },
+      { "src": "parcours-tasses.webp", "alt": "Série de tasses crémino" },
+      { "src": "parcours-cendres.webp", "alt": "Gamme cendres, bols et coupelles" }
+    ]
+  },
+  "luminaires": {
+    "label": "Luminaires sur mesure",
+    "texts": [
+      "Charlotte conçoit et fabrique des luminaires en céramique faits main — suspensions et lampes à poser — développés en collaboration sur mesure avec des cabinets d'architectes pour des projets hôteliers et de restauration.",
+      "Chaque création répond à des contraintes techniques exigeantes tout en s'inscrivant dans une recherche esthétique et chromatique approfondie."
+    ],
+    "ref_label": "Projets réalisés avec",
+    "ref_text": "Hôtel Le Padam (Paris) · Cabinet Adèle Ostermann · Maison Sauvage (Lyon)",
+    "img_main": "luminaire-adele.webp",
+    "img_main_alt": "Lampe à poser en céramique cannelée, pied bleu-vert et abat-jour lin",
+    "img_context": "luminaire-padam.webp",
+    "img_context_alt": "Lampe en céramique noire dans une chambre d'hôtel Le Padam"
+  },
+  "vaisselle": {
+    "label": "Art de la table",
+    "texts": [
+      "En parallèle, Charlotte développe ses propres collections de vaisselle et d'art de la table, seule ou en co-création avec des chefs et des restaurateurs, pensées pour accompagner l'expérience culinaire et l'identité des lieux.",
+      "Réalisées en petite série, ces pièces uniques traduisent un savoir-faire artisanal d'excellence et une approche résolument haut de gamme."
+    ],
+    "ref_label": "Collaborations",
+    "ref_text": "Restaurant Becquetance (Brioude) · Chef Nicolas Giordano · La Table du Haut-Allier",
+    "img_main": "vaisselle-assiettes.webp",
+    "img_main_alt": "Assiettes en grès aux teintes naturelles, collection Becquetance",
+    "img_mood": "vaisselle-mains.webp",
+    "img_mood_alt": "Mains écossant des petits pois dans une assiette en céramique"
+  },
+  "instagram": {
+    "images": [
+      { "src": "galerie-1.webp", "alt": "Boîtes en céramique émaillée" },
+      { "src": "galerie-2.webp", "alt": "Tasses Cremino en série" },
+      { "src": "galerie-3.webp", "alt": "Détail céramique" },
+      { "src": "galerie-4.webp", "alt": "Vases et pièces en grès" },
+      { "src": "galerie-5.webp", "alt": "Luminaire céramique — Hôtel Le Padam" },
+      { "src": "galerie-6.webp", "alt": "Pichet Aldo en céramique" },
+      { "src": "galerie-7.webp", "alt": "Pièces en terre cuite brute" },
+      { "src": "galerie-8.webp", "alt": "Gamme cendres — émaux naturels" },
+      { "src": "galerie-9.webp", "alt": "Collaboration Édith" },
+      { "src": "galerie-10.webp", "alt": "Détail atelier" },
+      { "src": "galerie-11.webp", "alt": "Pièces en grès émaillé" },
+      { "src": "galerie-12.webp", "alt": "Collection céramique" },
+      { "src": "galerie-13.webp", "alt": "Pièce émaillée" },
+      { "src": "galerie-14.webp", "alt": "Atelier ZougZoug" },
+      { "src": "galerie-15.webp", "alt": "Trio verre et pichet" },
+      { "src": "galerie-16.webp", "alt": "Vase vert gamme A" },
+      { "src": "galerie-17.webp", "alt": "Pièces en cours de séchage" },
+      { "src": "galerie-18.webp", "alt": "Collection grès" },
+      { "src": "galerie-19.webp", "alt": "Pièce céramique" },
+      { "src": "galerie-20.webp", "alt": "Céramique artisanale" }
+    ]
+  }
+}

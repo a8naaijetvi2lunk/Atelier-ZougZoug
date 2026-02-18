@@ -1,0 +1,55 @@
+# ============================================================
+# WordPress Core (ne pas committer)
+# ============================================================
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+
+# ============================================================
+# Uploads (trop lourd, backup separement)
+# ============================================================
+/wp-content/uploads/
+
+# ============================================================
+# Plugins (installer via liste, pas via git)
+# ============================================================
+/wp-content/plugins/*
+!/wp-content/plugins/index.php
+!/wp-content/mu-plugins/
+
+# ============================================================
+# Themes tiers
+# ============================================================
+/wp-content/themes/twenty*/
+
+# ============================================================
+# Notre theme — ON COMMITTE
+# ============================================================
+!/wp-content/themes/zougzoug/
+
+# ============================================================
+# Secrets & Environment
+# ============================================================
+.env
+*.env.local
+wp-config.php
+env-loader.php
+/DOCUMENTATIONS/
+/.claude
+CLAUDE.md
+# ============================================================
+# Systeme
+# ============================================================
+.DS_Store
+Thumbs.db
+*.log
+/wp-content/debug.log
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/backup*/
+node_modules/
+vendor/

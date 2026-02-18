@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "name": "Charlotte Auroux",
+    "text": "Céramiste installée à Brioude, en Auvergne, Charlotte Auroux façonne des pièces en grès et en porcelaine qui allient recherche esthétique et usage quotidien.",
+    "portrait": "charlotte-portrait.webp"
+  },
+  "blocs": [
+    {
+      "label": "L'atelier",
+      "tagline": "Un lieu de création ancré dans le territoire",
+      "texts": [
+        "Installé au cœur de Brioude, l'atelier est un espace de recherche et de production où chaque pièce est pensée, tournée et émaillée à la main.",
+        "Charlotte y développe ses collections personnelles et ses projets de collaboration avec des architectes, des chefs et des hôteliers."
+      ],
+      "image": "atelier-interieur.webp",
+      "image_alt": "Intérieur de l'atelier avec tour de potier et étagères de pièces"
+    },
+    {
+      "label": "Le parcours",
+      "tagline": "Du design à la céramique",
+      "texts": [
+        "Formée aux arts appliqués puis à la céramique, Charlotte a construit un parcours entre design et artisanat.",
+        "Cette double culture nourrit son approche : chaque pièce est à la fois un objet fonctionnel et une proposition esthétique."
+      ],
+      "image": "charlotte-tournage.webp",
+      "image_alt": "Charlotte au tour de potier"
+    },
+    {
+      "label": "La démarche",
+      "tagline": "Une céramique sur mesure, entre tradition et création",
+      "texts": [
+        "Le travail de Charlotte se distingue par une approche sur mesure : chaque projet commence par une écoute attentive du lieu, du client, de l'usage.",
+        "Les émaux sont développés en interne, les formes dessinées en réponse à des contraintes réelles. Rien n'est standardisé."
+      ],
+      "image": "emaux-recherche.webp",
+      "image_alt": "Échantillons d'émaux en cours de recherche"
+    }
+  ]
+}

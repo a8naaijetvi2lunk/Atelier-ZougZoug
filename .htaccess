@@ -1,0 +1,59 @@
+# ============================================================
+# SECURITE — Atelier ZougZoug
+# ============================================================
+
+# Proteger les fichiers sensibles
+<FilesMatch "^(wp-config\.php|\.htaccess|\.htpasswd|\.env|env-loader\.php|debug\.log|error_log)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquer l'acces aux fichiers .env partout
+<Files ".env">
+    Require all denied
+</Files>
+<Files ".env.example">
+    Require all denied
+</Files>
+
+# Desactiver le listing des repertoires
+Options -Indexes
+
+# Bloquer l'acces direct aux fichiers PHP dans uploads
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^wp-content/uploads/.*\.php$ - [F]
+</IfModule>
+
+# Bloquer xmlrpc.php
+<Files "xmlrpc.php">
+    Require all denied
+</Files>
+
+# Bloquer wp-trackback.php
+<Files "wp-trackback.php">
+    Require all denied
+</Files>
+
+# Empecher le sniffing du type MIME
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ============================================================
+# WordPress Permalinks
+# ============================================================
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress

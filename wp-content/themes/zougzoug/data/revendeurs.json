@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Revendeurs & Évènements",
+    "text": "Retrouvez les créations de l'Atelier ZougZoug chez nos revendeurs partenaires et lors de nos évènements."
+  },
+  "lieux": [
+    {
+      "nom": "Atelier ZougZoug",
+      "adresse": "6 rue de la Terrasse, 43100 Brioude",
+      "description": "Venez découvrir les collections directement à l'atelier, sur rendez-vous.",
+      "image": "lieu-atelier.webp",
+      "image_alt": "Façade de l'atelier ZougZoug à Brioude"
+    },
+    {
+      "nom": "Drôles de Zèbres",
+      "adresse": "Clermont-Ferrand",
+      "description": "Concept store design et artisanat. Sélection de pièces en grès et porcelaine.",
+      "image": "lieu-zebres.webp",
+      "image_alt": "Boutique Drôles de Zèbres"
+    },
+    {
+      "nom": "Artizon",
+      "adresse": "Brioude",
+      "description": "Galerie d'artisanat local regroupant les meilleurs créateurs de la région.",
+      "image": "lieu-artizon.webp",
+      "image_alt": "Galerie Artizon à Brioude"
+    }
+  ],
+  "photos_bande": [
+    { "src": "revendeurs-bande-1.webp", "alt": "Céramiques en boutique" },
+    { "src": "revendeurs-bande-2.webp", "alt": "Stand marché de créateurs" }
+  ],
+  "evenements": {
+    "a_venir": [
+      {
+        "nom": "Marché de Noël de Brioude",
+        "date": "Décembre 2026",
+        "lieu": "Place de la Halle, Brioude"
+      }
+    ],
+    "passes": [
+      {
+        "nom": "Journées Européennes des Métiers d'Art",
+        "date": "Avril 2025",
+        "lieu": "Brioude"
+      },
+      {
+        "nom": "Salon Céramique Contemporaine",
+        "date": "Mars 2025",
+        "lieu": "Lyon"
+      }
+    ]
+  }
+}

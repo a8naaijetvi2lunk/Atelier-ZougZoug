@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "Cours de céramique",
+    "image": "cours-hero.webp",
+    "image_alt": "Atelier de cours de céramique"
+  },
+  "intro": {
+    "accroche": "Apprenez à créer de vos mains",
+    "text": "Charlotte propose des ateliers de céramique dans son studio de Brioude. Tournage, modelage, émaillage : découvrez les gestes et les matières de la poterie artisanale dans un cadre chaleureux et bienveillant."
+  },
+  "offres": [
+    {
+      "nom": "Duo tournage",
+      "description": "Un moment privilégié à deux pour découvrir le tour de potier. Chacun repart avec sa pièce émaillée et cuite.",
+      "prix": "130€",
+      "infos": "2 personnes max · 2h30"
+    },
+    {
+      "nom": "Initiation tournage",
+      "description": "Découverte du tour de potier : centrage, montée, mise en forme. Repartez avec votre création unique.",
+      "prix": "70€",
+      "infos": "3 personnes max · 2h30"
+    },
+    {
+      "nom": "Initiation modelage",
+      "description": "Apprenez les techniques de modelage : plaque, colombin, estampage. Créez un bol, une tasse ou un vide-poche.",
+      "prix": "55€",
+      "infos": "4 personnes max · 2h"
+    },
+    {
+      "nom": "Tournage & modelage",
+      "description": "Un atelier complet pour explorer les deux techniques fondamentales de la céramique.",
+      "prix": "65€",
+      "infos": "6 personnes max · 2h30"
+    }
+  ],
+  "privatisation": {
+    "text": "Tous les ateliers sont privatisables pour des groupes, EVJF, team building ou anniversaires.",
+    "cta": "Me contacter pour privatiser"
+  },
+  "wecandoo": {
+    "text": "Retrouvez également mes ateliers sur WeCanDoo.",
+    "url": "https://wecandoo.fr"
+  },
+  "galerie": [
+    { "src": "cours-galerie-1.webp", "alt": "Atelier de tournage en cours" },
+    { "src": "cours-galerie-2.webp", "alt": "Pièces réalisées par les élèves" },
+    { "src": "cours-galerie-3.webp", "alt": "Détail mains sur le tour" }
+  ]
+}
