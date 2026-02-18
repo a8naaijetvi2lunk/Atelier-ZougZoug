@@ -5,7 +5,6 @@
  */
 
 get_header();
-$img = get_template_directory_uri() . '/assets/img/';
 ?>
 
   <!-- ======================== HERO PROJETS ======================== -->

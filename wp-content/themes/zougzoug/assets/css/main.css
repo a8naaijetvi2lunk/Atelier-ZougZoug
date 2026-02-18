@@ -412,6 +412,7 @@ img {
 .reveal-img--3 { bottom: 10%; left: 12%; width: 180px; height: 240px; }
 .reveal-img--4 { bottom: 8%; right: 6%; width: 230px; height: 260px; }
 .reveal-img--5 { top: 42%; right: 18%; width: 160px; height: 200px; }
+.reveal-img--m3 { display: none; }
 
 .cta-projets-btn {
   position: absolute;
@@ -472,18 +473,27 @@ img {
 }
 
 
+.section-references { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--color-border); }
+.section-references-label { display: block; font-weight: 500; font-size: var(--font-size-label); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); margin-bottom: 8px; }
+.section-references span { font-size: var(--font-size-small); line-height: 1.6; color: rgba(26, 26, 26, 0.6); font-style: italic; }
+
+
 /* ============================================================
-   LUMINAIRES
+   SHOWCASE — Sections repetables (luminaires, vaisselle, etc.)
    ============================================================ */
 
-.luminaires-wrapper {
+.showcase-wrapper {
   position: relative;
   z-index: 2;
-  background: var(--color-white);
+  background: var(--color-bg-main);
   width: 100%;
 }
 
-.luminaires {
+.showcase-wrapper--warm {
+  background: var(--color-bg-warm);
+}
+
+.showcase {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--section-padding);
@@ -492,7 +502,11 @@ img {
   align-items: center;
 }
 
-.luminaires-visual {
+.showcase--reversed {
+  flex-direction: row-reverse;
+}
+
+.showcase-visual {
   flex: 1;
   display: flex;
   gap: 20px;
@@ -500,26 +514,26 @@ img {
   min-width: 0;
 }
 
-.luminaires-img {
+.showcase-img {
   overflow: hidden;
   border-radius: 3px;
   opacity: 0;
   transform: translateY(40px);
 }
 
-.luminaires-img img {
+.showcase-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.luminaires-img--main { width: 280px; height: 380px; flex-shrink: 0; }
-.luminaires-img--context { width: 240px; height: 340px; flex-shrink: 0; margin-bottom: -40px; }
+.showcase-img--main { width: 280px; height: 380px; flex-shrink: 0; }
+.showcase-img--secondary { width: 240px; height: 340px; flex-shrink: 0; margin-bottom: -40px; }
 
-.luminaires-content { flex: 1; max-width: 480px; }
+.showcase-content { flex: 1; max-width: 480px; }
 
-.luminaires-text {
+.showcase-text {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: var(--font-size-body);
@@ -527,49 +541,6 @@ img {
   color: var(--color-dark);
   margin-bottom: 16px;
 }
-
-.section-references { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--color-border); }
-.section-references-label { display: block; font-weight: 500; font-size: var(--font-size-label); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); margin-bottom: 8px; }
-.section-references span { font-size: var(--font-size-small); line-height: 1.6; color: rgba(26, 26, 26, 0.6); font-style: italic; }
-
-
-/* ============================================================
-   VAISSELLE
-   ============================================================ */
-
-.vaisselle-wrapper {
-  position: relative;
-  z-index: 2;
-  background: var(--color-bg-warm);
-  width: 100%;
-}
-
-.vaisselle {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--section-padding);
-  display: flex;
-  gap: 80px;
-  align-items: center;
-}
-
-.vaisselle-content { flex: 1; max-width: 480px; }
-
-.vaisselle-text {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-  color: var(--color-dark);
-  margin-bottom: 16px;
-}
-
-.vaisselle-visual { flex: 1; display: flex; gap: 20px; align-items: flex-end; min-width: 0; }
-
-.vaisselle-img { overflow: hidden; border-radius: 3px; opacity: 0; transform: translateY(40px); }
-.vaisselle-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.vaisselle-img--main { width: 280px; height: 380px; flex-shrink: 0; }
-.vaisselle-img--mood { width: 240px; height: 340px; flex-shrink: 0; margin-bottom: -40px; }
 
 
 /* ============================================================
@@ -674,8 +645,10 @@ img {
 .footer-social a { color: rgba(255, 255, 255, 0.5); transition: color 0.2s ease; }
 .footer-social a:hover { color: var(--color-white); }
 
-.footer-bottom { max-width: var(--max-width); margin: 0 auto; padding: 24px 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.footer-bottom { max-width: var(--max-width); margin: 0 auto; padding: 24px 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; }
 .footer-bottom p { font-size: 13px; color: rgba(255, 255, 255, 0.35); }
+.footer-legal-link { font-size: 13px; color: rgba(255, 255, 255, 0.35); text-decoration: none; transition: color 0.3s; }
+.footer-legal-link:hover { color: rgba(255, 255, 255, 0.6); }
 
 
 /* ============================================================
@@ -759,9 +732,9 @@ img {
    ============================================================ */
 
 @media (max-width: 1024px) {
-  .luminaires, .vaisselle { gap: 40px; }
-  .luminaires-img--main, .vaisselle-img--main { width: 220px; height: 310px; }
-  .luminaires-img--context, .vaisselle-img--mood { width: 180px; height: 270px; }
+  .showcase { gap: 40px; }
+  .showcase-img--main { width: 220px; height: 310px; }
+  .showcase-img--secondary { width: 180px; height: 270px; }
 
   .reveal-img--1 { width: 180px; height: 240px; }
   .reveal-img--2 { width: 160px; height: 230px; }
@@ -802,22 +775,17 @@ img {
   .reveal-img--3, .reveal-img--4, .reveal-img--5 { display: none; }
   .reveal-img--1 { top: 8%; left: 5%; width: 120px; height: 160px; }
   .reveal-img--2 { bottom: 12%; top: auto; right: 5%; width: 130px; height: 170px; }
+  .reveal-img--m3 { display: block; bottom: 14%; left: 5%; width: 110px; height: 150px; }
 
   .cta-projets-btn { bottom: 3%; left: 50%; transform: translateX(-50%) translateY(20px); width: auto !important; white-space: nowrap; text-align: center; z-index: 5; }
 
-  .luminaires { flex-direction: column; padding: var(--section-padding-mobile); gap: 40px; }
-  .luminaires-visual { width: 100%; justify-content: center; }
-  .luminaires-img--main { width: 55%; height: auto; aspect-ratio: 7 / 10; }
-  .luminaires-img--context { width: 40%; height: auto; aspect-ratio: 3 / 4; margin-bottom: 0; }
-  .luminaires-content { max-width: 100%; }
-  .luminaires-text { font-size: 16px; }
-
-  .vaisselle { flex-direction: column-reverse; padding: var(--section-padding-mobile); gap: 40px; }
-  .vaisselle-visual { width: 100%; justify-content: center; }
-  .vaisselle-img--main { width: 55%; height: auto; aspect-ratio: 7 / 10; }
-  .vaisselle-img--mood { width: 40%; height: auto; aspect-ratio: 3 / 4; margin-bottom: 0; }
-  .vaisselle-content { max-width: 100%; }
-  .vaisselle-text { font-size: 16px; }
+  .showcase { flex-direction: column; padding: var(--section-padding-mobile); gap: 40px; }
+  .showcase--reversed { flex-direction: column-reverse; }
+  .showcase-visual { width: 100%; justify-content: center; }
+  .showcase-img--main { width: 55%; height: auto; aspect-ratio: 7 / 10; }
+  .showcase-img--secondary { width: 40%; height: auto; aspect-ratio: 3 / 4; margin-bottom: 0; }
+  .showcase-content { max-width: 100%; }
+  .showcase-text { font-size: 16px; }
 
   .insta-gallery { padding: 50px 0 0; }
   .insta-header { margin-bottom: 24px; }
@@ -834,7 +802,7 @@ img {
   .footer-nav { align-items: center; }
   .footer-contact { align-items: center; text-align: center; }
   .footer-social { justify-content: center; }
-  .footer-bottom { padding: 20px 20px; text-align: center; }
+  .footer-bottom { padding: 20px 20px; text-align: center; flex-direction: column; gap: 8px; }
 
   .section-references span { font-size: 13px; }
 }

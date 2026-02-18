@@ -3,9 +3,20 @@
  * Template : Accueil
  */
 
-get_header();
 $data = zz_get_data('home');
-$uri = get_template_directory_uri();
+
+// Preload LCP hero image (first slide left = element LCP)
+add_action('wp_head', function () use ($data) {
+	$first_slide = $data['hero']['slides'][0] ?? null;
+	if ($first_slide) {
+		$url = zz_img($first_slide['left']);
+		if ($url) {
+			echo '<link rel="preload" as="image" href="' . esc_url($url) . '" fetchpriority="high">' . "\n";
+		}
+	}
+}, 1);
+
+get_header();
 ?>
 
 	<!-- ======================== HERO — Diptyque Parallax ======================== -->
@@ -28,20 +39,31 @@ $uri = get_template_directory_uri();
 		</div>
 
 		<!-- Tagline -->
-		<p class="hero-tagline"><?php echo nl2br(esc_html($data['hero']['tagline'] ?? "La céramique comme langage commun\nentre design et architecture.")); ?></p>
+		<div class="hero-tagline"><?php echo wp_kses_post($data['hero']['tagline'] ?? 'La céramique comme langage commun<br>entre design et architecture.'); ?></div>
 
 		<!-- Swiper slider vertical -->
 		<div class="hero-slider">
 			<div class="swiper" id="heroSwiper">
 				<div class="swiper-wrapper">
 					<?php if (!empty($data['hero']['slides'])) : ?>
-						<?php foreach ($data['hero']['slides'] as $slide) : ?>
+						<?php foreach ($data['hero']['slides'] as $si => $slide) :
+							$left_url  = esc_url(zz_img($slide['left']));
+							$right_url = esc_url(zz_img($slide['right']));
+						?>
 							<div class="swiper-slide">
 								<div class="hero-half" data-swiper-parallax-y="-20%">
-									<span class="hero-bg hero-bg--left" style="background-image: url('<?php echo esc_url($uri . '/assets/img/' . $slide['left']); ?>')"></span>
+									<?php if ($si === 0) : ?>
+									<span class="hero-bg hero-bg--left" style="background-image: url('<?php echo $left_url; ?>')"></span>
+									<?php else : ?>
+									<span class="hero-bg hero-bg--left" data-bg="<?php echo $left_url; ?>"></span>
+									<?php endif; ?>
 								</div>
 								<div class="hero-half" data-swiper-parallax-y="35%">
-									<span class="hero-bg hero-bg--right" style="background-image: url('<?php echo esc_url($uri . '/assets/img/' . $slide['right']); ?>')"></span>
+									<?php if ($si === 0) : ?>
+									<span class="hero-bg hero-bg--right" style="background-image: url('<?php echo $right_url; ?>')"></span>
+									<?php else : ?>
+									<span class="hero-bg hero-bg--right" data-bg="<?php echo $right_url; ?>"></span>
+									<?php endif; ?>
 								</div>
 							</div>
 						<?php endforeach; ?>
@@ -67,15 +89,25 @@ $uri = get_template_directory_uri();
 				</div>
 
 				<!-- Texte central -->
-				<p class="parcours-text"><?php echo esc_html($data['statement']['text'] ?? 'Une poterie qui se vit, se touche, s\'inscrit dans le temps et l\'espace. Des pièces conçues pour un lieu, un usage, une atmosphère.'); ?></p>
+				<div class="parcours-text"><?php echo wp_kses_post($data['statement']['text'] ?? 'Une poterie qui se vit, se touche, s\'inscrit dans le temps et l\'espace. Des pièces conçues pour un lieu, un usage, une atmosphère.'); ?></div>
 
 				<!-- 5 photos reveal -->
 				<?php if (!empty($data['statement']['images'])) : ?>
 					<?php foreach ($data['statement']['images'] as $i => $img) : ?>
 						<div class="reveal-img reveal-img--<?php echo $i + 1; ?>">
-							<img src="<?php echo esc_url($uri . '/assets/img/' . $img['src']); ?>" alt="<?php echo esc_attr($img['alt']); ?>" loading="lazy">
+							<img src="<?php echo esc_url(zz_img($img['attachment_id'] ?? $img['src'] ?? '')); ?>" alt="<?php echo esc_attr($img['alt'] ?? ''); ?>" loading="lazy">
 						</div>
 					<?php endforeach; ?>
+				<?php endif; ?>
+
+				<!-- 3e image mobile (bas-gauche) -->
+				<?php
+					$m3 = $data['statement']['mobile_images'][2] ?? null;
+					if ($m3 && (!empty($m3['attachment_id']) || !empty($m3['src']))) :
+				?>
+					<div class="reveal-img reveal-img--m3">
+						<img src="<?php echo esc_url(zz_img($m3['attachment_id'] ?? $m3['src'] ?? '')); ?>" alt="<?php echo esc_attr($m3['alt'] ?? ''); ?>" loading="lazy">
+					</div>
 				<?php endif; ?>
 
 				<!-- CTA -->
@@ -84,64 +116,46 @@ $uri = get_template_directory_uri();
 		</div>
 	</section>
 
-	<!-- ======================== LUMINAIRES ======================== -->
-	<div class="luminaires-wrapper">
-		<section class="luminaires">
-			<div class="luminaires-visual">
-				<div class="luminaires-img luminaires-img--main">
-					<img src="<?php echo esc_url($uri . '/assets/img/' . ($data['luminaires']['img_main'] ?? 'luminaire-adele.webp')); ?>" alt="<?php echo esc_attr($data['luminaires']['img_main_alt'] ?? 'Lampe à poser en céramique'); ?>">
+	<!-- ======================== SHOWCASES ======================== -->
+	<?php if (!empty($data['showcases'])) : ?>
+		<?php foreach ($data['showcases'] as $sc_index => $showcase) :
+			$is_reversed = ($sc_index % 2 !== 0);
+		?>
+		<div class="showcase-wrapper<?php echo $is_reversed ? ' showcase-wrapper--warm' : ''; ?>">
+			<section class="showcase<?php echo $is_reversed ? ' showcase--reversed' : ''; ?>">
+				<div class="showcase-visual">
+					<div class="showcase-img showcase-img--main">
+						<img src="<?php echo esc_url(zz_img($showcase['img_main'] ?? '')); ?>" alt="<?php echo esc_attr($showcase['img_main_alt'] ?? ''); ?>">
+					</div>
+					<div class="showcase-img showcase-img--secondary">
+						<img src="<?php echo esc_url(zz_img($showcase['img_secondary'] ?? '')); ?>" alt="<?php echo esc_attr($showcase['img_secondary_alt'] ?? ''); ?>">
+					</div>
 				</div>
-				<div class="luminaires-img luminaires-img--context">
-					<img src="<?php echo esc_url($uri . '/assets/img/' . ($data['luminaires']['img_context'] ?? 'luminaire-padam.webp')); ?>" alt="<?php echo esc_attr($data['luminaires']['img_context_alt'] ?? 'Lampe en céramique en situation'); ?>">
+				<div class="showcase-content">
+					<span class="section-label"><?php echo esc_html($showcase['label'] ?? ''); ?></span>
+					<?php if (!empty($showcase['texts'])) : ?>
+						<?php foreach ($showcase['texts'] as $text) : ?>
+							<p class="showcase-text"><?php echo wp_kses_post($text); ?></p>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					<div class="section-references">
+						<em class="section-references-label"><?php echo esc_html($showcase['ref_label'] ?? ''); ?></em>
+						<span><?php echo esc_html($showcase['ref_text'] ?? ''); ?></span>
+					</div>
+					<?php if (!empty($showcase['cta_text'])) : ?>
+						<a href="<?php echo esc_url(home_url($showcase['cta_url'] ?? '/contact/')); ?>" class="cta-button"><?php echo esc_html($showcase['cta_text']); ?></a>
+					<?php endif; ?>
 				</div>
-			</div>
-			<div class="luminaires-content">
-				<span class="section-label"><?php echo esc_html($data['luminaires']['label'] ?? 'Luminaires sur mesure'); ?></span>
-				<?php if (!empty($data['luminaires']['texts'])) : ?>
-					<?php foreach ($data['luminaires']['texts'] as $text) : ?>
-						<p class="luminaires-text"><?php echo esc_html($text); ?></p>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				<div class="section-references">
-					<em class="section-references-label"><?php echo esc_html($data['luminaires']['ref_label'] ?? 'Projets réalisés avec'); ?></em>
-					<span><?php echo esc_html($data['luminaires']['ref_text'] ?? ''); ?></span>
-				</div>
-				<a href="<?php echo esc_url(home_url('/contact/')); ?>" class="cta-button">Discuter d'un projet</a>
-			</div>
-		</section>
-	</div>
-
-	<!-- ======================== VAISSELLE ======================== -->
-	<div class="vaisselle-wrapper">
-		<section class="vaisselle">
-			<div class="vaisselle-content">
-				<span class="section-label"><?php echo esc_html($data['vaisselle']['label'] ?? 'Art de la table'); ?></span>
-				<?php if (!empty($data['vaisselle']['texts'])) : ?>
-					<?php foreach ($data['vaisselle']['texts'] as $text) : ?>
-						<p class="vaisselle-text"><?php echo esc_html($text); ?></p>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				<div class="section-references">
-					<em class="section-references-label"><?php echo esc_html($data['vaisselle']['ref_label'] ?? 'Collaborations'); ?></em>
-					<span><?php echo esc_html($data['vaisselle']['ref_text'] ?? ''); ?></span>
-				</div>
-				<a href="<?php echo esc_url(home_url('/contact/')); ?>" class="cta-button">Collaborer avec l'atelier</a>
-			</div>
-			<div class="vaisselle-visual">
-				<div class="vaisselle-img vaisselle-img--main">
-					<img src="<?php echo esc_url($uri . '/assets/img/' . ($data['vaisselle']['img_main'] ?? 'vaisselle-assiettes.webp')); ?>" alt="<?php echo esc_attr($data['vaisselle']['img_main_alt'] ?? 'Assiettes en grès'); ?>">
-				</div>
-				<div class="vaisselle-img vaisselle-img--mood">
-					<img src="<?php echo esc_url($uri . '/assets/img/' . ($data['vaisselle']['img_mood'] ?? 'vaisselle-mains.webp')); ?>" alt="<?php echo esc_attr($data['vaisselle']['img_mood_alt'] ?? 'Mains dans une assiette en céramique'); ?>">
-				</div>
-			</div>
-		</section>
-	</div>
+			</section>
+		</div>
+		<?php endforeach; ?>
+	<?php endif; ?>
 
 	<!-- ======================== GALERIE INSTAGRAM ======================== -->
 	<section class="insta-gallery">
 		<div class="insta-header">
-			<a href="https://www.instagram.com/atelier_zougzoug/" target="_blank" rel="noopener" class="insta-link">
+			<?php $insta_url = $data['instagram']['url'] ?? 'https://www.instagram.com/atelier_zougzoug/'; ?>
+			<a href="<?php echo esc_url($insta_url); ?>" target="_blank" rel="noopener" class="insta-link">
 				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
 				<span>@atelier_zougzoug</span>
 			</a>
@@ -149,8 +163,17 @@ $uri = get_template_directory_uri();
 		<div class="insta-grid">
 			<?php if (!empty($data['instagram']['images'])) : ?>
 				<?php foreach ($data['instagram']['images'] as $img) : ?>
+					<?php
+						if (!empty($img['attachment_id'])) {
+							$img_url = wp_get_attachment_url(intval($img['attachment_id']));
+						} elseif (!empty($img['src'])) {
+							$img_url = zz_img($img['src']);
+						} else {
+							continue;
+						}
+					?>
 					<div class="insta-item">
-						<img src="<?php echo esc_url($uri . '/assets/img/' . $img['src']); ?>" alt="<?php echo esc_attr($img['alt']); ?>" loading="lazy">
+						<img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img['alt'] ?? ''); ?>" loading="lazy">
 					</div>
 				<?php endforeach; ?>
 			<?php endif; ?>

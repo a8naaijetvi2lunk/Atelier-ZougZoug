@@ -18,17 +18,19 @@ add_action('admin_menu', function () {
 	// Sous-menus par page
 	$pages = [
 		'home'       => 'Accueil',
-		'about'      => 'A propos',
+		'about'      => 'À propos',
 		'contact'    => 'Contact',
 		'cours'      => 'Cours',
-		'revendeurs' => 'Revendeurs',
-		'global'     => 'Parametres globaux',
+		'revendeurs'     => 'Revendeurs',
+		'collaborations' => 'Collaborations',
+		'mentions'       => 'Mentions légales',
+		'global'     => 'Paramètres globaux',
 	];
 
 	foreach ($pages as $slug => $label) {
 		add_submenu_page(
 			'zz-contenu',
-			$label . ' — Edition',
+			$label . ' — Édition',
 			$label,
 			'manage_options',
 			'zz-contenu-' . $slug,
@@ -54,6 +56,9 @@ add_action('admin_enqueue_scripts', function ($hook) {
 	// WP Media (pour le picker d'images)
 	wp_enqueue_media();
 
+	// WP Editor (TinyMCE pour les champs richtext)
+	wp_enqueue_editor();
+
 	// Script editeur
 	wp_enqueue_script('zz-admin-editor', $uri . '/inc/admin/admin-editor.js', ['jquery'], ZZ_VERSION, true);
 	wp_localize_script('zz-admin-editor', 'zzEditor', [
@@ -75,11 +80,13 @@ function zz_admin_page_render() {
 	// Mapping slug admin → slug JSON + slug URL front
 	$pages_map = [
 		'home'       => ['json' => 'home',       'url' => '/',              'label' => 'Accueil',        'icon' => 'dashicons-admin-home'],
-		'about'      => ['json' => 'about',      'url' => '/a-propos/',     'label' => 'A propos',       'icon' => 'dashicons-admin-users'],
+		'about'      => ['json' => 'about',      'url' => '/a-propos/',     'label' => 'À propos',       'icon' => 'dashicons-admin-users'],
 		'contact'    => ['json' => 'contact',     'url' => '/contact/',      'label' => 'Contact',        'icon' => 'dashicons-email-alt'],
 		'cours'      => ['json' => 'cours',       'url' => '/cours/',        'label' => 'Cours',          'icon' => 'dashicons-welcome-learn-more'],
-		'revendeurs' => ['json' => 'revendeurs',  'url' => '/revendeurs/',   'label' => 'Revendeurs',     'icon' => 'dashicons-store'],
-		'global'     => ['json' => 'global',      'url' => '/',              'label' => 'Parametres',     'icon' => 'dashicons-admin-settings'],
+		'revendeurs'     => ['json' => 'revendeurs',     'url' => '/revendeurs/',      'label' => 'Revendeurs',      'icon' => 'dashicons-store'],
+		'collaborations' => ['json' => 'collaborations', 'url' => '/collaborations/',  'label' => 'Collaborations',  'icon' => 'dashicons-portfolio'],
+		'mentions'       => ['json' => 'mentions',       'url' => '/mentions-legales/', 'label' => 'Mentions légales', 'icon' => 'dashicons-shield'],
+		'global'     => ['json' => 'global',      'url' => '/',              'label' => 'Paramètres',     'icon' => 'dashicons-admin-settings'],
 	];
 
 	$config = isset($pages_map[$page_slug]) ? $pages_map[$page_slug] : $pages_map['home'];
@@ -99,8 +106,9 @@ function zz_admin_page_render() {
 					<span>Chargement...</span>
 				</div>
 			</div>
+			<div class="zz-editor-divider" id="zz-editor-divider"></div>
 			<div class="zz-editor-preview">
-				<iframe id="zz-editor-iframe" src="<?php echo esc_url(home_url($config['url'])); ?>"></iframe>
+				<iframe id="zz-editor-iframe" src="<?php echo esc_url(add_query_arg('zz_preview', '1', home_url($config['url']))); ?>"></iframe>
 			</div>
 		</div>
 	</div>

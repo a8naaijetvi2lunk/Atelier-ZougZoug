@@ -67,6 +67,13 @@ button, .button {
   color: #FFFFFF;
 }
 
+/* --- Admin bar "Aller sur le site" --- */
+#wpadminbar #wp-admin-bar-site-name > .ab-item {
+  font-family: 'General Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
 
 /* --- Buttons --- */
 .wrap .page-title-action,
@@ -227,4 +234,507 @@ select:focus {
 .wrap .wp-heading-inline {
   font-weight: 500;
   color: #1A1A1A;
+}
+
+
+/* ============================================================
+   MEDIA LIBRARY — Redesign DA ZougZoug
+   Aligne sur le style des pages Projets / Agenda
+   ============================================================ */
+
+/* --- 0. Espacement titre + bouton → barre de filtres --- */
+.upload-php .wrap {
+  padding-top: 10px;
+}
+
+.upload-php .wp-heading-inline {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.upload-php .page-title-action {
+  margin-left: 12px !important;
+  position: relative !important;
+  top: -2px !important;
+}
+
+/* L'espacement titre → barre de filtres est gere via margin-top dans la section 1 */
+
+/* --- Font override global media frame --- */
+.media-modal,
+.media-modal *,
+.media-frame,
+.media-frame * {
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+
+/* --- 1. Barre de filtres (toolbar) ---
+   Structure Backbone : .wp-filter contient .media-toolbar-secondary (gauche) + .media-toolbar-primary (droite)
+   Les enfants utilisent float; on passe en flexbox pour un alignement propre.
+*/
+
+/* Conteneur principal */
+.upload-php .media-frame .wp-filter,
+.upload-php .wp-filter {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(26, 26, 26, 0.06) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.04) !important;
+  margin-top: 20px !important;
+  margin-bottom: 16px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  min-height: 52px;
+}
+
+/* Secondary (gauche) : icones vue + selects + bouton selection */
+.upload-php .wp-filter .media-toolbar-secondary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  float: none !important;
+  height: auto !important;
+  flex: 1;
+}
+
+/* Primary (droite) : label + champ recherche */
+.upload-php .wp-filter .media-toolbar-primary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  float: none !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+/* Reset des marges auto WP sur les enfants toolbar */
+.upload-php .wp-filter .media-toolbar-secondary > *,
+.upload-php .wp-filter .media-toolbar-primary > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  float: none !important;
+}
+
+/* --- Icones vue liste / grille --- */
+.upload-php .wp-filter .view-switch {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px;
+  margin-right: 6px !important;
+}
+
+.upload-php .wp-filter .view-switch > a {
+  border: none !important;
+  border-radius: 4px !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.2s ease;
+  padding: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.upload-php .wp-filter .view-switch > a:hover {
+  background: rgba(26, 26, 26, 0.05);
+}
+
+.upload-php .wp-filter .view-switch > a.current {
+  background: rgba(184, 149, 106, 0.1);
+}
+
+.upload-php .wp-filter .view-switch > a::before {
+  color: rgba(26, 26, 26, 0.3) !important;
+  transition: color 0.2s ease;
+}
+
+.upload-php .wp-filter .view-switch > a:hover::before {
+  color: #1A1A1A !important;
+}
+
+.upload-php .wp-filter .view-switch > a.current::before {
+  color: #B8956A !important;
+}
+
+/* --- Selects (Tous les medias, Toutes les dates) --- */
+.upload-php .wp-filter select.attachment-filters,
+.upload-php .media-frame select.attachment-filters {
+  border: 1px solid rgba(26, 26, 26, 0.12) !important;
+  border-radius: 6px !important;
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  padding: 0 30px 0 12px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%231A1A1A' stroke-opacity='0.3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+  background-size: 10px !important;
+  cursor: pointer;
+}
+
+.upload-php .wp-filter select.attachment-filters:hover {
+  border-color: rgba(26, 26, 26, 0.25) !important;
+}
+
+.upload-php .wp-filter select.attachment-filters:focus {
+  border-color: #B8956A !important;
+  box-shadow: 0 0 0 1px #B8956A !important;
+  outline: none !important;
+}
+
+/* --- Bouton "Selection groupee" --- */
+.upload-php .wp-filter .select-mode-toggle-button,
+.media-frame.mode-grid .select-mode-toggle-button {
+  border: 1px solid rgba(26, 26, 26, 0.12) !important;
+  border-radius: 30px !important;
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 0 18px !important;
+  height: 34px !important;
+  line-height: 32px !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.upload-php .wp-filter .select-mode-toggle-button:hover {
+  border-color: #1A1A1A !important;
+}
+
+.upload-php .wp-filter .select-mode-toggle-button.active,
+.media-frame.mode-select .select-mode-toggle-button {
+  background: #1A1A1A !important;
+  color: #FFFFFF !important;
+  border-color: #1A1A1A !important;
+}
+
+/* Bouton "Supprimer la selection" en mode select */
+.upload-php .wp-filter .delete-selected-button,
+.media-frame.mode-select .delete-selected-button {
+  border-radius: 30px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 0 18px !important;
+  height: 34px !important;
+  line-height: 32px !important;
+}
+
+/* --- Champ de recherche --- */
+.upload-php .wp-filter .search,
+.upload-php .media-frame .search,
+.media-frame.mode-grid .wp-filter input[type="search"] {
+  border: 1px solid rgba(26, 26, 26, 0.12) !important;
+  border-radius: 6px !important;
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  font-size: 13px !important;
+  padding: 0 12px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease;
+  min-width: 200px;
+}
+
+.upload-php .wp-filter .search:focus,
+.upload-php .media-frame .search:focus,
+.media-frame.mode-grid .wp-filter input[type="search"]:focus {
+  border-color: #B8956A !important;
+  box-shadow: 0 0 0 1px #B8956A !important;
+  outline: none !important;
+}
+
+/* Label "Rechercher des medias" */
+.upload-php .wp-filter .media-toolbar-primary label {
+  font-size: 13px !important;
+  color: rgba(26, 26, 26, 0.4) !important;
+  font-weight: 400 !important;
+  white-space: nowrap;
+  line-height: 34px !important;
+}
+
+/* Spinner alignement */
+.upload-php .wp-filter .spinner {
+  margin: 0 !important;
+  float: none !important;
+}
+
+/* Compteur "XX elements" */
+.upload-php .wp-filter .media-toolbar-secondary .displaying-num {
+  font-size: 12px !important;
+  color: rgba(26, 26, 26, 0.35) !important;
+  margin-left: 4px !important;
+  line-height: 34px !important;
+}
+
+
+/* --- 2. Grille de thumbnails --- */
+.wp-core-ui .attachment-preview {
+  background: #F8F6F3;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.06);
+}
+
+.wp-core-ui .attachment .thumbnail::after {
+  box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.06);
+}
+
+.wp-core-ui .attachment .filename {
+  font-size: 11px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: none;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+/* Selection : ring accent au lieu du bleu WP */
+.wp-core-ui .attachment.details,
+.media-frame.mode-grid .attachment.details {
+  box-shadow:
+    inset 0 0 0 3px #fff,
+    inset 0 0 0 7px #B8956A !important;
+}
+
+.wp-core-ui .selected.attachment,
+.media-frame.mode-grid .selected.attachment {
+  box-shadow:
+    inset 0 0 0 5px #fff,
+    inset 0 0 0 7px rgba(26, 26, 26, 0.25) !important;
+}
+
+/* Checkmark accent */
+.wp-core-ui .attachment .check {
+  background: #F8F6F3;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(26, 26, 26, 0.15);
+}
+
+.wp-core-ui .attachment.details .check,
+.wp-core-ui .attachment.selected .check,
+.media-frame.mode-grid .attachment.selected .check {
+  background-color: #B8956A !important;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px #B8956A !important;
+}
+
+.wp-core-ui .attachment .check .media-modal-icon {
+  background-color: #B8956A;
+}
+
+/* Barre de progression upload */
+.media-progress-bar div {
+  background: #B8956A !important;
+}
+
+/* Compteur medias */
+.upload-php .media-frame .attachments-browser .media-toolbar .media-toolbar-secondary .displaying-num {
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+
+/* --- 3. Sidebar details (panneau droit) --- */
+.media-sidebar {
+  background: #F8F6F3;
+  border-left: 1px solid rgba(26, 26, 26, 0.08) !important;
+}
+
+.media-sidebar h2 {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(26, 26, 26, 0.4) !important;
+}
+
+.media-sidebar .setting span,
+.media-sidebar .setting .name,
+.attachment-details .setting span,
+.attachment-details .setting .name {
+  font-size: 12px !important;
+  color: rgba(26, 26, 26, 0.5) !important;
+}
+
+.attachment-info {
+  border-bottom-color: rgba(26, 26, 26, 0.08) !important;
+}
+
+.attachment-info .filename {
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.attachment-info .details {
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+/* Liens "Modifier l'image", "Voir la page du fichier" */
+.attachment-info .edit-attachment,
+.attachment-details .edit-attachment {
+  color: #B8956A !important;
+  text-decoration: none;
+}
+
+.attachment-info .edit-attachment:hover,
+.attachment-details .edit-attachment:hover {
+  color: #1A1A1A !important;
+}
+
+/* Lien "Copier le lien" */
+.attachment-details-copy-link .copy-attachment-url {
+  border-radius: 30px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* Supprimer definitivement */
+.media-sidebar .delete-attachment,
+.attachment-details .delete-attachment {
+  color: rgba(26, 26, 26, 0.35) !important;
+  font-size: 12px;
+}
+
+.media-sidebar .delete-attachment:hover,
+.attachment-details .delete-attachment:hover {
+  color: #cc3333 !important;
+}
+
+
+/* --- 4. Zone d'upload (drag-drop) --- */
+.media-frame .uploader-inline {
+  border: 2px dashed rgba(26, 26, 26, 0.12) !important;
+  border-radius: 8px;
+  background: rgba(248, 246, 243, 0.5);
+}
+
+.uploader-inline h2,
+.uploader-inline-content h2 {
+  font-weight: 400 !important;
+  color: rgba(26, 26, 26, 0.5) !important;
+  font-size: 16px !important;
+}
+
+.uploader-inline .upload-instructions,
+.uploader-inline-content .upload-instructions {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.uploader-inline .browser.button {
+  border-radius: 30px !important;
+  font-weight: 500 !important;
+  background: #1A1A1A !important;
+  border-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+  padding: 8px 24px !important;
+}
+
+.uploader-inline .browser.button:hover {
+  background: #333 !important;
+}
+
+/* Zone drag-drop pleine page */
+.drag-drop #drag-drop-area {
+  border: 2px dashed rgba(26, 26, 26, 0.12);
+  background: #F8F6F3;
+  border-radius: 8px;
+}
+
+.drag-drop.drag-over #drag-drop-area {
+  border-color: #B8956A;
+  background: rgba(184, 149, 106, 0.04);
+}
+
+.drag-drop-inside p {
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.drag-drop-inside p.drag-drop-info {
+  color: #1A1A1A;
+  font-weight: 500;
+}
+
+
+/* --- 5. Modal detail attachement (plein ecran) --- */
+.edit-attachment-frame .edit-media-header {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08) !important;
+}
+
+.edit-attachment-frame .edit-media-header .left,
+.edit-attachment-frame .edit-media-header .right {
+  border-color: rgba(26, 26, 26, 0.08) !important;
+  color: rgba(26, 26, 26, 0.5);
+  transition: all 0.2s ease;
+}
+
+.edit-attachment-frame .edit-media-header .left:hover,
+.edit-attachment-frame .edit-media-header .right:hover {
+  background: rgba(26, 26, 26, 0.04);
+  color: #1A1A1A;
+}
+
+.edit-attachment-frame .attachment-info {
+  background: #F8F6F3 !important;
+  border-left: 1px solid rgba(26, 26, 26, 0.08) !important;
+}
+
+.edit-attachment-frame .attachment-info .details,
+.edit-attachment-frame .attachment-info .settings {
+  border-bottom-color: rgba(26, 26, 26, 0.08) !important;
+}
+
+/* Bouton fermer modal */
+.upload-php .media-modal-close {
+  border-left-color: rgba(26, 26, 26, 0.08) !important;
+  color: rgba(26, 26, 26, 0.5);
+  transition: all 0.2s ease;
+}
+
+.upload-php .media-modal-close:hover {
+  background: rgba(26, 26, 26, 0.04);
+  color: #1A1A1A;
+}
+
+/* Bouton "Modifier l'image" dans le detail */
+.edit-attachment-frame .edit-attachment {
+  border-radius: 30px !important;
+  font-weight: 500 !important;
+}
+
+
+/* --- 6. Tablenav pour la vue liste (mode=list) --- */
+.upload-php .tablenav .actions select {
+  border: 1px solid rgba(26, 26, 26, 0.12) !important;
+  border-radius: 6px !important;
+  height: 34px !important;
+}
+
+.upload-php .tablenav .button.action {
+  border-radius: 30px !important;
+  height: 34px !important;
+}
+
+/* Load more */
+.load-more-wrapper .load-more-count {
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }

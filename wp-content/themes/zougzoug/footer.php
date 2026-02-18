@@ -51,6 +51,7 @@
 
 		<div class="footer-bottom">
 			<p>&copy; <?php echo date('Y'); ?> Atelier ZougZoug — Charlotte Auroux. Tous droits réservés.</p>
+			<a href="<?php echo esc_url(home_url('/mentions-legales/')); ?>" class="footer-legal-link">Mentions légales & Confidentialité</a>
 		</div>
 	</footer>
 

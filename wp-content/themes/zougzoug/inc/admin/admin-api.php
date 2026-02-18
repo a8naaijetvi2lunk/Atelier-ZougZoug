@@ -37,7 +37,7 @@ add_action('rest_api_init', function () {
  * Pages autorisees (whitelist)
  */
 function zz_api_allowed_slugs() {
-	return ['home', 'about', 'contact', 'cours', 'revendeurs', 'global'];
+	return ['home', 'about', 'contact', 'cours', 'revendeurs', 'collaborations', 'mentions', 'global'];
 }
 
 /**
@@ -72,6 +72,9 @@ function zz_api_get_page($request) {
 		return new WP_Error('json_error', 'Le fichier JSON est invalide.', ['status' => 500]);
 	}
 
+	// Convertir les attachment IDs en URLs pour l'editeur
+	$data = zz_api_resolve_ids_to_urls($data);
+
 	return new WP_REST_Response(['data' => $data], 200);
 }
 
@@ -88,6 +91,9 @@ function zz_api_save_page($request) {
 	}
 
 	$page_data = $data['data'];
+
+	// Convertir les URLs en attachment IDs pour le stockage
+	$page_data = zz_api_resolve_urls_to_ids($page_data);
 
 	// Sanitization recursive
 	$page_data = zz_api_sanitize_recursive($page_data);
@@ -150,6 +156,9 @@ function zz_api_sanitize_recursive($data) {
 			'em'     => [],
 			'a'      => ['href' => [], 'target' => [], 'rel' => []],
 			'span'   => ['class' => []],
+			'p'      => [],
+			'ul'     => [],
+			'li'     => [],
 		]);
 	}
 
@@ -175,4 +184,69 @@ function zz_api_sanitize_recursive($data) {
 	}
 
 	return sanitize_text_field((string) $data);
+}
+
+/**
+ * Conversion IDs → URLs pour l'editeur (GET)
+ * - Entier positif qui est un attachment → URL complete
+ * - Objet avec attachment_id → remplace par src (URL)
+ */
+function zz_api_resolve_ids_to_urls($data) {
+	if (is_int($data) && $data > 0) {
+		$url = wp_get_attachment_url($data);
+		if ($url) return $url;
+	}
+
+	if (is_array($data)) {
+		// Objet {attachment_id: 123, alt: "..."} → {src: "url", alt: "..."}
+		if (isset($data['attachment_id']) && is_int($data['attachment_id'])) {
+			$url = wp_get_attachment_url($data['attachment_id']);
+			if ($url) {
+				$data['src'] = $url;
+				unset($data['attachment_id']);
+			}
+		}
+		foreach ($data as $key => &$value) {
+			$value = zz_api_resolve_ids_to_urls($value);
+		}
+	}
+
+	return $data;
+}
+
+/**
+ * Conversion URLs → IDs pour le stockage (POST)
+ * - URL d'upload → attachment ID
+ * - Objet {src: "upload-url", ...} → {attachment_id: ID, ...}
+ */
+function zz_api_resolve_urls_to_ids($data) {
+	if (is_string($data) && strpos($data, '/wp-content/uploads/') !== false) {
+		$id = attachment_url_to_postid($data);
+		if (!$id) {
+			// Essayer avec le chemin relatif
+			$full = home_url('/' . ltrim($data, '/'));
+			$id = attachment_url_to_postid($full);
+		}
+		if ($id > 0) return $id;
+	}
+
+	if (is_array($data)) {
+		// Objet {src: "upload-url", alt: "..."} → {attachment_id: ID, alt: "..."}
+		if (isset($data['src']) && is_string($data['src']) && strpos($data['src'], '/wp-content/uploads/') !== false) {
+			$id = attachment_url_to_postid($data['src']);
+			if (!$id) {
+				$full = home_url('/' . ltrim($data['src'], '/'));
+				$id = attachment_url_to_postid($full);
+			}
+			if ($id > 0) {
+				$data['attachment_id'] = $id;
+				unset($data['src']);
+			}
+		}
+		foreach ($data as $key => &$value) {
+			$value = zz_api_resolve_urls_to_ids($value);
+		}
+	}
+
+	return $data;
 }

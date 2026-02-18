@@ -23,6 +23,15 @@
     allowTouchMove: false,
   });
 
+  // Lazy-load hero slides 2-4 (loaded 2s after page, before first transition at 5s)
+  setTimeout(function () {
+    var els = document.querySelectorAll('#heroSwiper [data-bg]');
+    for (var i = 0; i < els.length; i++) {
+      els[i].style.backgroundImage = 'url(' + els[i].getAttribute('data-bg') + ')';
+      els[i].removeAttribute('data-bg');
+    }
+  }, 2000);
+
   // --- GSAP ScrollTrigger ---
   gsap.registerPlugin(ScrollTrigger);
 
@@ -89,6 +98,7 @@
       imgConfigs = [
         { y: 20, scale: 0.96, start: 0.1 },
         { y: -20, scale: 0.96, start: 0.4 },
+        { y: 25, scale: 0.94, start: 0.55 },
       ];
     } else {
       imgConfigs = [
@@ -125,33 +135,20 @@
     tl.to({}, { duration: 0.25 }, 0.75);
   })();
 
-  // 2. Luminaires — images reveal au scroll
-  document.querySelectorAll('.luminaires-img').forEach(function (img, i) {
-    gsap.to(img, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.luminaires',
-        start: 'top ' + (75 - i * 10) + '%',
-        toggleActions: 'play none none reverse',
-      }
-    });
-  });
-
-  // 3. Vaisselle — images reveal au scroll
-  document.querySelectorAll('.vaisselle-img').forEach(function (img, i) {
-    gsap.to(img, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.vaisselle',
-        start: 'top ' + (75 - i * 10) + '%',
-        toggleActions: 'play none none reverse',
-      }
+  // 2. Showcases — images reveal au scroll
+  document.querySelectorAll('.showcase').forEach(function (section) {
+    section.querySelectorAll('.showcase-img').forEach(function (img, i) {
+      gsap.to(img, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top ' + (75 - i * 10) + '%',
+          toggleActions: 'play none none reverse',
+        }
+      });
     });
   });
 

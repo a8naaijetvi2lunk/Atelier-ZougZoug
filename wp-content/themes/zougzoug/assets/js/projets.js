@@ -140,39 +140,66 @@ function escapeAttr(str) {
 
     var d = p.details;
     if (d) {
-      if (d.location) {
+      // Nature du projet
+      if (d.nature) {
         html += '<div class="lightbox-detail">';
-        html += '<span class="lightbox-detail-label">Adresse</span>';
-        html += '<p class="lightbox-detail-value">' + escapeAttr(d.location) + '</p>';
+        html += '<span class="lightbox-detail-label">Nature du projet</span>';
+        html += '<div class="lightbox-detail-value">' + d.nature + '</div>';
         html += '</div>';
       }
+
+      // Client + Adresse
+      if (d.client || d.location) {
+        html += '<div class="lightbox-detail">';
+        html += '<span class="lightbox-detail-label">Adresse</span>';
+        if (d.client) html += '<p class="lightbox-detail-value lightbox-detail-value--strong">' + escapeAttr(d.client) + '</p>';
+        if (d.location) html += '<p class="lightbox-detail-value">' + escapeAttr(d.location) + '</p>';
+        if (d.instagram) html += '<p class="lightbox-detail-value"><a href="https://instagram.com/' + escapeAttr(d.instagram.replace('@', '')) + '" target="_blank" rel="noopener">' + escapeAttr(d.instagram) + '</a></p>';
+        if (d.website) html += '<p class="lightbox-detail-value"><a href="' + escapeAttr(d.website) + '" target="_blank" rel="noopener">' + escapeAttr(d.website.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a></p>';
+        html += '</div>';
+      }
+
+      // Matériaux
+      if (d.materiaux) {
+        html += '<div class="lightbox-detail">';
+        html += '<span class="lightbox-detail-label">Mat\u00e9riaux</span>';
+        html += '<div class="lightbox-detail-value">' + d.materiaux + '</div>';
+        html += '</div>';
+      }
+
+      // Année
       if (d.year) {
         html += '<div class="lightbox-detail">';
-        html += '<span class="lightbox-detail-label">Annee</span>';
+        html += '<span class="lightbox-detail-label">Ann\u00e9e de r\u00e9alisation</span>';
         html += '<p class="lightbox-detail-value">' + escapeAttr(d.year) + '</p>';
         html += '</div>';
       }
-      if (d.client) {
+
+      // Collaborateur / Crédits
+      if (d.collaborateur) {
         html += '<div class="lightbox-detail">';
-        html += '<span class="lightbox-detail-label">Client</span>';
-        html += '<p class="lightbox-detail-value">' + escapeAttr(d.client) + '</p>';
+        html += '<span class="lightbox-detail-label">Collaborateurs</span>';
+        html += '<div class="lightbox-detail-value">' + d.collaborateur + '</div>';
         html += '</div>';
       }
+
+      // Description longue
       if (d.texte) {
-        html += '<div class="lightbox-sidebar-text">' + nl2br(escapeAttr(d.texte)) + '</div>';
+        html += '<div class="lightbox-sidebar-text">' + d.texte + '</div>';
       }
-      if (!d.location && !d.year && !d.texte) {
-        html += '<p class="lightbox-placeholder">Details a completer — ' + escapeAttr(p.name) + '</p>';
+
+      if (!d.nature && !d.location && !d.year && !d.texte) {
+        html += '<p class="lightbox-placeholder">D\u00e9tails \u00e0 compl\u00e9ter \u2014 ' + escapeAttr(p.name) + '</p>';
       }
     } else {
-      html += '<p class="lightbox-placeholder">Details a completer — ' + escapeAttr(p.name) + '</p>';
+      html += '<p class="lightbox-placeholder">D\u00e9tails \u00e0 compl\u00e9ter \u2014 ' + escapeAttr(p.name) + '</p>';
     }
 
     return html;
   }
 
   /**
-   * Masonry layout — place each image in the shortest column
+   * Masonry layout — round-robin (DOM order = visual order)
    * Waits for all images to load to get natural dimensions
    */
   function layoutMasonry() {
@@ -195,42 +222,53 @@ function escapeAttr(str) {
 
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
-      var isWide = item.classList.contains('lightbox-media--wide');
 
-      if (isWide) {
-        var maxHeight = Math.max.apply(null, colHeights);
-        item.style.position = 'absolute';
-        item.style.left = gap + 'px';
-        item.style.top = maxHeight + gap + 'px';
-        item.style.width = containerWidth + 'px';
-        var videoHeight = item.offsetHeight;
-        for (var vc = 0; vc < cols; vc++) {
-          colHeights[vc] = maxHeight + gap + videoHeight;
+      /* Round-robin : carte i va dans colonne i % cols */
+      var col = i % cols;
+
+      var x = gap + col * (colWidth + gap);
+      var y = colHeights[col] + gap;
+
+      item.style.position = 'absolute';
+      item.style.left = x + 'px';
+      item.style.top = y + 'px';
+      item.style.width = colWidth + 'px';
+
+      // Get dimensions: forced orientation or natural ratio
+      var img = item.querySelector('img');
+      var video = item.querySelector('video');
+      var orient = item.getAttribute('data-orientation');
+      var itemHeight;
+      if (orient === 'portrait') {
+        itemHeight = colWidth * (4 / 3);
+      } else if (orient === 'landscape') {
+        itemHeight = colWidth * (3 / 4);
+      } else if (orient === 'square') {
+        itemHeight = colWidth;
+      } else if (img && img.naturalWidth && img.naturalHeight) {
+        itemHeight = colWidth * (img.naturalHeight / img.naturalWidth);
+      } else if (video) {
+        // Use poster image dimensions (pre-loaded)
+        var posterUrl = video.getAttribute('poster');
+        var cachedPoster = posterUrl ? layoutMasonry._posterCache && layoutMasonry._posterCache[posterUrl] : null;
+        if (cachedPoster && cachedPoster.width && cachedPoster.height) {
+          itemHeight = colWidth * (cachedPoster.height / cachedPoster.width);
+        } else {
+          // Fallback: 16:9 ratio
+          itemHeight = colWidth * (9 / 16);
         }
       } else {
-        var shortest = 0;
-        for (var sc = 1; sc < cols; sc++) {
-          if (colHeights[sc] < colHeights[shortest]) shortest = sc;
-        }
-
-        var x = gap + shortest * (colWidth + gap);
-        var y = colHeights[shortest] + gap;
-
-        item.style.position = 'absolute';
-        item.style.left = x + 'px';
-        item.style.top = y + 'px';
-        item.style.width = colWidth + 'px';
-
-        var img = item.querySelector('img');
-        var itemHeight;
-        if (img && img.naturalWidth && img.naturalHeight) {
-          itemHeight = colWidth * (img.naturalHeight / img.naturalWidth);
-        } else {
-          itemHeight = item.offsetHeight;
-        }
-
-        colHeights[shortest] = y + itemHeight;
+        itemHeight = item.offsetHeight || colWidth;
       }
+
+      /* Poser la hauteur si orientation forcee (pour object-fit: cover) */
+      if (orient) {
+        item.style.height = itemHeight + 'px';
+      } else {
+        item.style.height = '';
+      }
+
+      colHeights[col] = y + itemHeight;
     }
 
     // Set height on the inner wrapper, not the scroll container
@@ -247,15 +285,22 @@ function escapeAttr(str) {
     // Build media elements inside a masonry wrapper
     var html = '<div class="lightbox-loader"><div class="lightbox-loader-spinner"></div></div>';
     html += '<div class="lightbox-masonry">';
+    var orients = p.orientations || [];
     for (var i = 0; i < p.medias.length; i++) {
       var file = p.medias[i];
       var src = mediaPath(file);
+      var orient = orients[i] || 'auto';
+      var orientAttr = orient !== 'auto' ? ' data-orientation="' + orient + '"' : '';
       if (isVideo(file)) {
-        html += '<div class="lightbox-media lightbox-media--wide">'
-          + '<video controls preload="none" playsinline><source src="' + src + '" type="video/mp4"></video>'
+        var posterSrc = src.replace(/\.(mp4|webm|mov)$/i, '-poster.jpg');
+        html += '<div class="lightbox-media lightbox-media--video"' + orientAttr + '>'
+          + '<div class="lightbox-video-wrap">'
+          + '<video preload="none" playsinline poster="' + posterSrc + '"><source src="' + src + '" type="video/mp4"></video>'
+          + '<button class="lightbox-video-play" aria-label="Lire la vid\u00e9o"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>'
+          + '</div>'
           + '</div>';
       } else {
-        html += '<div class="lightbox-media">'
+        html += '<div class="lightbox-media"' + orientAttr + '>'
           + '<img src="' + src + '" alt="' + escapeAttr(p.name) + '">'
           + '</div>';
       }
@@ -272,17 +317,17 @@ function escapeAttr(str) {
     lbSidebar.scrollTop = 0;
     lbGrid.scrollTop = 0;
 
-    // Wait for images to load then layout masonry
+    // Wait for images + video posters to load then layout masonry
     var images = lbGrid.querySelectorAll('img');
+    var videos = lbGrid.querySelectorAll('video[poster]');
     var loaded = 0;
-    var total = images.length;
+    var total = images.length + videos.length;
     var layoutDone = false;
 
     function finishLayout() {
       if (layoutDone) return;
       layoutDone = true;
       layoutMasonry();
-      // Remove spinner, reveal images
       var loader = lbGrid.querySelector('.lightbox-loader');
       if (loader) loader.remove();
       lbGrid.classList.remove('is-loading');
@@ -294,7 +339,7 @@ function escapeAttr(str) {
       return;
     }
 
-    function onImageLoad() {
+    function onMediaLoad() {
       loaded++;
       if (loaded >= total) {
         finishLayout();
@@ -303,14 +348,29 @@ function escapeAttr(str) {
 
     for (var j = 0; j < images.length; j++) {
       if (images[j].complete) {
-        onImageLoad();
+        onMediaLoad();
       } else {
-        images[j].addEventListener('load', onImageLoad);
-        images[j].addEventListener('error', onImageLoad);
+        images[j].addEventListener('load', onMediaLoad);
+        images[j].addEventListener('error', onMediaLoad);
       }
     }
 
-    // Fallback: layout after 3s even if images haven't loaded
+    // Pour les vidéos avec poster, charger le poster comme image pour obtenir les dimensions
+    if (!layoutMasonry._posterCache) layoutMasonry._posterCache = {};
+    for (var v = 0; v < videos.length; v++) {
+      (function(videoEl) {
+        var posterUrl = videoEl.getAttribute('poster');
+        var posterImg = new Image();
+        posterImg.onload = function() {
+          layoutMasonry._posterCache[posterUrl] = { width: posterImg.naturalWidth, height: posterImg.naturalHeight };
+          onMediaLoad();
+        };
+        posterImg.onerror = onMediaLoad;
+        posterImg.src = posterUrl;
+      })(videos[v]);
+    }
+
+    // Fallback: layout after 3s even if media hasn't loaded
     setTimeout(finishLayout, 3000);
   }
 
@@ -322,10 +382,26 @@ function escapeAttr(str) {
     var videos = lbGrid.querySelectorAll('video');
     for (var i = 0; i < videos.length; i++) {
       videos[i].pause();
+      videos[i].removeAttribute('controls');
+      var wrap = videos[i].closest('.lightbox-video-wrap');
+      if (wrap) wrap.classList.remove('is-playing');
     }
 
     lbGrid.classList.remove('is-loading', 'is-ready');
   }
+
+  // Play button on videos
+  lbGrid.addEventListener('click', function (e) {
+    var btn = e.target.closest('.lightbox-video-play');
+    if (!btn) return;
+    e.preventDefault();
+    var wrap = btn.closest('.lightbox-video-wrap');
+    var video = wrap ? wrap.querySelector('video') : null;
+    if (!video) return;
+    video.setAttribute('controls', '');
+    video.play();
+    wrap.classList.add('is-playing');
+  });
 
   document.getElementById('projets-grid').addEventListener('click', function (e) {
     if (lightbox.classList.contains('is-open')) return;

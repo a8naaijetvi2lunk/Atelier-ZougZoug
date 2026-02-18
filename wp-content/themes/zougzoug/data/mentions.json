@@ -1,0 +1,52 @@
+{
+    "seo": {
+        "title": "Politique de confidentialité — Atelier ZougZoug",
+        "description": "Politique de confidentialité et mentions légales du site Atelier ZougZoug, céramiste à Brioude.",
+        "og_image": "",
+        "canonical": ""
+    },
+    "title": "Politique de confidentialité",
+    "last_updated": "18 février 2026",
+    "sections": [
+        {
+            "title": "Éditeur du site",
+            "content": "<p><strong>Atelier ZougZoug</strong><br>Charlotte Auroux — Céramiste, entreprise individuelle<br>6 rue de la Terrasse, 43100 Brioude, France</p><p>Email : <a href=\"mailto:atelierzougzoug@gmail.com\">atelierzougzoug@gmail.com</a><br>Téléphone : 06 60 19 98 18</p>"
+        },
+        {
+            "title": "Hébergement",
+            "content": "<p>Le site est hébergé par :<br><strong>OVH SAS</strong><br>2 rue Kellermann, 59100 Roubaix, France<br>Téléphone : 1007<br>Site web : <a href=\"https://www.ovhcloud.com\" target=\"_blank\" rel=\"noopener\">ovhcloud.com</a></p>"
+        },
+        {
+            "title": "Propriété du nom de domaine",
+            "content": "<p>Le nom de domaine <strong>atelierzougzoug.fr</strong> est la propriété de Charlotte Auroux.</p>"
+        },
+        {
+            "title": "Propriété intellectuelle",
+            "content": "<p>L'ensemble du contenu de ce site (textes, photographies, illustrations, logo, mise en page) est la propriété exclusive de Charlotte Auroux / Atelier ZougZoug, sauf mention contraire.</p><p>Toute reproduction, représentation, modification ou adaptation, totale ou partielle, est interdite sans autorisation écrite préalable.</p>"
+        },
+        {
+            "title": "Données personnelles collectées",
+            "content": "<p>Le site collecte des données personnelles uniquement dans le cadre :</p><ul><li><strong>Formulaire de contact</strong> (via Contact Form 7) : nom, adresse email, message. Ces données sont transmises par email à l'atelier et ne sont pas stockées en base de données.</li><li><strong>Statistiques de visite</strong> (via Google Analytics) : données de navigation anonymisées (pages visitées, durée, provenance géographique approximative).</li></ul>"
+        },
+        {
+            "title": "Finalité du traitement",
+            "content": "<p>Les données collectées servent exclusivement à :</p><ul><li>Répondre aux demandes de contact et aux projets de collaboration</li><li>Analyser la fréquentation du site pour en améliorer le contenu</li></ul><p>Aucune donnée n'est transmise à des tiers à des fins commerciales.</p>"
+        },
+        {
+            "title": "Cookies",
+            "content": "<p>Le site utilise les cookies suivants :</p><ul><li><strong>Cookies techniques</strong> (WordPress) : nécessaires au fonctionnement du site, ils ne requièrent pas de consentement.</li><li><strong>Cookies analytiques</strong> (Google Analytics) : permettent de mesurer l'audience du site. Ces cookies sont déposés uniquement après consentement de l'utilisateur.</li></ul><p>Vous pouvez à tout moment modifier vos préférences de cookies ou les supprimer via les paramètres de votre navigateur.</p>"
+        },
+        {
+            "title": "Durée de conservation",
+            "content": "<p>Les données du formulaire de contact (emails reçus) sont conservées le temps nécessaire au traitement de la demande, et supprimées au plus tard 3 ans après le dernier échange.</p><p>Les données de navigation (Google Analytics) sont conservées 14 mois.</p>"
+        },
+        {
+            "title": "Vos droits",
+            "content": "<p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p><ul><li>Droit d'accès à vos données personnelles</li><li>Droit de rectification</li><li>Droit à l'effacement</li><li>Droit à la limitation du traitement</li><li>Droit à la portabilité</li><li>Droit d'opposition</li></ul><p>Pour exercer ces droits, contactez Charlotte Auroux par email à <a href=\"mailto:atelierzougzoug@gmail.com\">atelierzougzoug@gmail.com</a>.</p><p>En cas de litige, vous pouvez adresser une réclamation à la <a href=\"https://www.cnil.fr\" target=\"_blank\" rel=\"noopener\">CNIL</a>.</p>"
+        },
+        {
+            "title": "Crédits",
+            "content": "<p>Conception et développement du site : <a href=\"https://yvescharvis.fr\" target=\"_blank\" rel=\"noopener\">Yves Charvis</a><br>Photographies : Charlotte Auroux / Atelier ZougZoug, sauf mention contraire.</p>"
+        }
+    ]
+}

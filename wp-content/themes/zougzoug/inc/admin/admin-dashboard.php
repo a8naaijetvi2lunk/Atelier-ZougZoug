@@ -1,10 +1,10 @@
 <?php
 /**
- * Dashboard full custom — Remplace le dashboard WP par defaut
+ * Dashboard full custom — Remplace le dashboard WP par défaut
  */
 
 /**
- * Supprimer tous les widgets dashboard par defaut
+ * Supprimer tous les widgets dashboard par défaut
  */
 add_action('wp_dashboard_setup', function () {
 	global $wp_meta_boxes;
@@ -37,7 +37,7 @@ function zz_dashboard_render() {
 	$prenom = $user->first_name ?: $user->display_name;
 	$today = date_i18n('l j F Y');
 
-	// Prochains evenements
+	// Prochains événements
 	$events = new WP_Query([
 		'post_type'      => 'evenement',
 		'posts_per_page' => 4,
@@ -97,7 +97,7 @@ function zz_dashboard_render() {
 				<span class="zz-dash-shortcut-icon">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 				</span>
-				<span class="zz-dash-shortcut-label">Nouvel evenement</span>
+				<span class="zz-dash-shortcut-label">Nouvel événement</span>
 			</a>
 			<a href="<?php echo esc_url(admin_url('admin.php?page=zz-contenu')); ?>" class="zz-dash-shortcut">
 				<span class="zz-dash-shortcut-icon">
@@ -113,13 +113,13 @@ function zz_dashboard_render() {
 			</a>
 		</div>
 
-		<!-- Deux colonnes : Evenements + Projets -->
+		<!-- Deux colonnes : Événements + Projets -->
 		<div class="zz-dash-grid">
 
-			<!-- Prochains evenements -->
+			<!-- Prochains événements -->
 			<div class="zz-dash-card">
 				<div class="zz-dash-card-header">
-					<h3 class="zz-dash-card-title">Prochains evenements</h3>
+					<h3 class="zz-dash-card-title">Prochains événements</h3>
 					<a href="<?php echo esc_url(admin_url('edit.php?post_type=evenement')); ?>" class="zz-dash-card-link">Voir tout</a>
 				</div>
 				<?php if ($events->have_posts()) : ?>
@@ -154,7 +154,7 @@ function zz_dashboard_render() {
 					<?php endwhile; wp_reset_postdata(); ?>
 				</div>
 				<?php else : ?>
-				<p class="zz-dash-empty">Aucun evenement a venir.<br><a href="<?php echo esc_url(admin_url('post-new.php?post_type=evenement')); ?>">Ajouter un evenement</a></p>
+				<p class="zz-dash-empty">Aucun événement à venir.<br><a href="<?php echo esc_url(admin_url('post-new.php?post_type=evenement')); ?>">Ajouter un événement</a></p>
 				<?php endif; ?>
 			</div>
 

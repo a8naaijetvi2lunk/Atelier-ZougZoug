@@ -74,7 +74,26 @@ gsap.registerPlugin(ScrollTrigger);
   });
 })();
 
-// 4. Photos du bas : reveal au scroll
+// 4. Select placeholder — style attenue quand aucun sujet choisi
+(function () {
+  var select = document.querySelector('.contact-form select[name="sujet"]');
+  if (!select) return;
+
+  var firstValue = select.options[0] ? select.options[0].value : '';
+
+  function updatePlaceholder() {
+    if (select.selectedIndex === 0 || select.value === firstValue) {
+      select.classList.add('is-placeholder');
+    } else {
+      select.classList.remove('is-placeholder');
+    }
+  }
+
+  updatePlaceholder();
+  select.addEventListener('change', updatePlaceholder);
+})();
+
+// 5. Photos du bas : reveal au scroll
 document.querySelectorAll('.contact-photo').forEach(function (photo, i) {
   gsap.from(photo, {
     opacity: 0,

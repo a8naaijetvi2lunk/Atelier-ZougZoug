@@ -31,4 +31,13 @@ add_action('after_setup_theme', function () {
 	add_image_size('projet-card', 600, 450, true);
 	add_image_size('projet-lightbox', 1200, 0, false);
 	add_image_size('hero-slide', 1440, 900, true);
+	add_image_size('og-image', 1200, 630, true);
+});
+
+// Hide admin bar in editor preview iframe
+add_filter('show_admin_bar', function ($show) {
+	if (isset($_GET['zz_preview']) && $_GET['zz_preview'] === '1') {
+		return false;
+	}
+	return $show;
 });

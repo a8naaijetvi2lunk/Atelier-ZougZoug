@@ -1,15 +1,17 @@
 {
-  "site_title": "Atelier ZougZoug",
-  "site_subtitle": "Charlotte Auroux — Céramiste, Brioude",
-  "footer": {
-    "baseline": "Céramiste — Brioude, Auvergne",
-    "email": "atelierzougzoug@gmail.com",
-    "phone": "06 60 19 98 18",
-    "address": "6 rue de la Terrasse\n43100 Brioude",
-    "instagram": "https://www.instagram.com/atelier_zougzoug/"
-  },
-  "meta": {
-    "description": "Atelier ZougZoug — Charlotte Auroux, céramiste à Brioude. Luminaires sur mesure, vaisselle artisanale, cours de céramique.",
-    "og_image": "og-default.webp"
-  }
+    "site_title": "Atelier ZougZoug",
+    "site_subtitle": "Charlotte Auroux — Céramiste, Brioude",
+    "footer": {
+        "baseline": "Céramiste — Brioude, Auvergne",
+        "email": "atelierzougzoug@gmail.com",
+        "phone": "06 60 19 98 18",
+        "address": "6 rue de la Terrasse\n43100 Brioude",
+        "instagram": "https://www.instagram.com/atelier_zougzoug/"
+    },
+    "meta": {
+        "description": "Atelier ZougZoug — Charlotte Auroux, céramiste à Brioude. Luminaires sur mesure, vaisselle artisanale, cours de céramique.",
+        "og_image": "og-default.webp",
+        "site_name": "Atelier ZougZoug",
+        "locale": "fr_FR"
+    }
 }

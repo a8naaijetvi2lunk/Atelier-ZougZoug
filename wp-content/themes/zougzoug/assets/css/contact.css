@@ -219,6 +219,95 @@
 
 
 /* ============================================================
+   CONTACT FORM 7 — Integration CF7
+   ============================================================ */
+
+.wpcf7 {
+  margin: 0;
+  padding: 0;
+}
+
+.wpcf7-form .hidden-fields-container {
+  display: none;
+}
+
+.wpcf7-form-control-wrap {
+  display: block;
+}
+
+.wpcf7-form-control {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Validation — champ en erreur */
+.wpcf7-not-valid {
+  border-color: #E53935 !important;
+}
+
+.wpcf7-not-valid-tip {
+  display: block;
+  margin-top: 4px;
+  font-family: 'General Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #E53935;
+}
+
+/* Message de reponse (succes / erreur) */
+.wpcf7-response-output {
+  margin: 20px 0 0 !important;
+  padding: 14px 16px !important;
+  border: 1px solid rgba(26, 26, 26, 0.12) !important;
+  border-radius: 4px;
+  font-family: 'General Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.wpcf7-form.sent .wpcf7-response-output {
+  border-color: #4CAF50 !important;
+  color: #2E7D32;
+  background: rgba(76, 175, 80, 0.06);
+}
+
+.wpcf7-form.invalid .wpcf7-response-output,
+.wpcf7-form.unaccepted .wpcf7-response-output,
+.wpcf7-form.failed .wpcf7-response-output {
+  border-color: #E53935 !important;
+  color: #C62828;
+  background: rgba(229, 57, 53, 0.06);
+}
+
+/* Spinner CF7 */
+.wpcf7-spinner {
+  display: none;
+}
+
+/* Etat submitting — bouton desactive */
+.wpcf7-form.submitting .cta-button {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Submit — cursor + reset input appearance */
+.contact-form input[type="submit"].cta-button {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Select placeholder — couleur attenuee */
+.form-group select.is-placeholder {
+  color: rgba(26, 26, 26, 0.3);
+}
+
+.form-group select option {
+  color: #1A1A1A;
+}
+
+
+/* ============================================================
    BANDE PHOTOS — 2 images cote a cote
    ============================================================ */
 

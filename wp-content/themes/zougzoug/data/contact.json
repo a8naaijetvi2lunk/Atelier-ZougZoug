@@ -1,28 +1,40 @@
 {
-  "form": {
-    "label": "Contact",
-    "title": "Vous avez un projet ?\nParlons-en."
-  },
-  "info": {
-    "label": "L'atelier",
-    "name": "Charlotte Auroux",
-    "studio": "Atelier ZougZoug",
-    "email": "atelierzougzoug@gmail.com",
-    "phone": "06 60 19 98 18",
-    "phone_link": "+33660199818",
-    "address": "6 rue de la Terrasse\n43100 Brioude",
-    "instagram": "https://www.instagram.com/atelier_zougzoug/",
-    "instagram_handle": "@atelier_zougzoug",
-    "photo": "contact-hero.webp",
-    "photo_alt": "Jeux d'ombres sur céramique, atelier ZougZoug"
-  },
-  "photos": [
-    { "src": "contact-atelier.webp", "alt": "Pièces en céramique blanche, lumière naturelle dans l'atelier" },
-    { "src": "contact-boutique.webp", "alt": "Intérieur de l'atelier-boutique ZougZoug" }
-  ],
-  "cta": {
-    "text": "Un projet sur mesure en céramique ?\nParlons-en.",
-    "button": "Écrire un email",
-    "url": "mailto:atelierzougzoug@gmail.com"
-  }
+    "seo": {
+        "title": "Contact — Atelier ZougZoug, céramiste à Brioude (43)",
+        "description": "Contactez Charlotte Auroux, céramiste à Brioude (43). Projets sur mesure, luminaires, vaisselle. Atelier ZougZoug, 6 rue de la Terrasse.",
+        "og_image": 261,
+        "canonical": "https://zougzoug.lan/contact/"
+    },
+    "form": {
+        "label": "Contact",
+        "title": "<p>Vous avez un projet ?</p>\n<p>Parlons-en.</p>"
+    },
+    "info": {
+        "label": "L'atelier",
+        "name": "Charlotte Auroux",
+        "studio": "Atelier ZougZoug",
+        "email": "atelierzougzoug@gmail.com",
+        "phone": "06 60 19 98 18",
+        "phone_link": "+33660199818",
+        "address": "<p>6 rue de la Terrasse 43100 Brioude</p>",
+        "instagram": "https://www.instagram.com/atelier_zougzoug/",
+        "instagram_handle": "@atelier_zougzoug",
+        "photo": 203,
+        "photo_alt": "Jeux d'ombres sur céramique, atelier ZougZoug"
+    },
+    "photos": [
+        {
+            "alt": "Pièces en céramique blanche, lumière naturelle dans l'atelier",
+            "attachment_id": 204
+        },
+        {
+            "alt": "Intérieur de l'atelier-boutique ZougZoug",
+            "attachment_id": 205
+        }
+    ],
+    "cta": {
+        "text": "<p>Un projet sur mesure en céramique ? Parlons-en.</p>",
+        "button": "Écrire un email",
+        "url": "/contact/"
+    }
 }

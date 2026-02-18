@@ -227,13 +227,32 @@
 }
 
 .lightbox-sidebar {
-  width: 380px;
+  width: 450px;
   flex-shrink: 0;
   height: 100vh;
   overflow-y: auto;
   padding: 60px 40px 60px;
   background: #F8F6F3;
   border-right: 1px solid rgba(26, 26, 26, 0.08);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 26, 26, 0.15) transparent;
+}
+
+.lightbox-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.lightbox-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lightbox-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 26, 0.15);
+  border-radius: 4px;
+}
+
+.lightbox-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 26, 26, 0.3);
 }
 
 .lightbox-sidebar-name {
@@ -287,6 +306,11 @@
   color: #1A1A1A;
 }
 
+.lightbox-detail-value--strong {
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
 .lightbox-sidebar-text {
   margin-top: 32px;
   padding-top: 24px;
@@ -315,6 +339,25 @@
   overflow-x: hidden;
   padding: 0;
   position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 26, 26, 0.12) transparent;
+}
+
+.lightbox-gallery::-webkit-scrollbar {
+  width: 5px;
+}
+
+.lightbox-gallery::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lightbox-gallery::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 26, 0.12);
+  border-radius: 4px;
+}
+
+.lightbox-gallery::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 26, 26, 0.25);
 }
 
 /* Masonry inner wrapper */
@@ -367,14 +410,66 @@
   display: block;
 }
 
+/* Orientation forcee depuis le back-office */
+.lightbox-media[data-orientation] {
+  overflow: hidden;
+}
+.lightbox-media[data-orientation] img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Video wrapper */
+.lightbox-video-wrap {
+  position: relative;
+  cursor: pointer;
+}
+
 .lightbox-media video {
   width: 100%;
   height: auto;
   display: block;
+  background: #1A1A1A;
+  object-fit: contain;
 }
 
-.lightbox-media--wide {
-  /* Full width — handled by JS masonry */
+/* Play button overlay */
+.lightbox-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  backdrop-filter: blur(4px);
+  padding: 0;
+}
+
+.lightbox-video-play svg {
+  width: 20px;
+  height: 20px;
+  fill: #FFFFFF;
+  margin-left: 3px;
+}
+
+.lightbox-video-wrap:hover .lightbox-video-play {
+  background: rgba(0, 0, 0, 0.75);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* Hide play button when video is playing */
+.lightbox-video-wrap.is-playing .lightbox-video-play {
+  opacity: 0;
+  pointer-events: none;
 }
 
 
@@ -497,8 +592,14 @@
     height: 14px;
   }
 
-  .lightbox-media--wide {
-    /* Full width — handled by JS masonry */
+  .lightbox-video-play {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox-video-play svg {
+    width: 16px;
+    height: 16px;
   }
 }
 

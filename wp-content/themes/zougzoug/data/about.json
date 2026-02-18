@@ -1,50 +1,55 @@
 {
-  "hero": {
-    "label": "À propos",
-    "name": "Charlotte Auroux",
-    "text": "Charlotte Auroux est la potière qui travaille sous le nom de l'atelier ZougZoug. En 2020 elle s'installe en atelier-boutique dans le 20e arrondissement parisien, puis part en exploration des paysages et des différentes traditions potières durant un voyage d'un an en Argentine. Depuis 2024 elle est installée au cœur des volcans d'Auvergne et partage son temps entre Paris et la Haute-Loire.",
-    "portrait": "about-portrait.webp",
-    "portrait_alt": "Charlotte Auroux, céramiste — Atelier ZougZoug"
-  },
-  "blocs": [
-    {
-      "label": "Entre matière brute et précision d'usage",
-      "tagline": "Une céramique ancrée dans le réel, attentive au détail.",
-      "texts": [
-        "Son travail est inspiré des étrusques et du sauvage. Elle dessine, tourne, fabrique ses émaux et cuit chaque pièce patiemment dans son atelier. Elle trouve son inspiration dans le travail de l'argile à haute température, qu'elle considère comme le moyen le plus naturel et le plus expressif pour donner vie à ses objets.",
-        "ZougZoug, un mot-double qui sonne comme un rebond pour explorer des chemins de traverse, y glaner des petites roches volcaniques, des argiles et cendres de bois comme matières premières à ses réalisations."
-      ],
-      "image": "about-vases.webp",
-      "image_alt": "Détail de vases en céramique, émaux naturels",
-      "reverse": false
+    "seo": {
+        "title": "Charlotte Auroux, céramiste en Auvergne — Atelier ZougZoug",
+        "description": "Découvrez le parcours de Charlotte Auroux, potière installée en Auvergne. Céramique artisanale, émaux naturels, pièces sur mesure à Brioude.",
+        "og_image": 260,
+        "canonical": "https://zougzoug.lan/a-propos/"
     },
-    {
-      "label": "Poterie à vivre",
-      "tagline": "Des objets fonctionnels, pensés comme des pièces singulières.",
-      "texts": [
-        "ZougZoug c'est de l'art de la table, des luminaires, et la volonté d'intégrer de plus en plus de céramique dans l'aménagement des espaces intérieurs par la création de petit mobilier. Une poterie qui se vit, se touche, s'inscrit dans le temps et l'espace. Des pièces conçues pour un lieu, un usage, une atmosphère.",
-        "En parallèle, Charlotte développe ses propres collections de vaisselle et d'art de la table seule ou en co-création avec des chefs et des restaurateurs, pensées pour accompagner l'expérience culinaire et l'identité des lieux. Réalisées en petite série, ces pièces uniques traduisent un savoir-faire artisanal d'excellence et une approche résolument haut de gamme."
-      ],
-      "image": "about-mains.webp",
-      "image_alt": "Pièces en terre cuite, processus de création",
-      "reverse": true
+    "hero": {
+        "label": "À propos",
+        "name": "Charlotte Auroux",
+        "text": "<p>Charlotte Auroux est la potière qui travaille sous le nom de l'atelier ZougZoug. En 2020 elle s'installe en atelier-boutique dans le 20e arrondissement parisien, puis part en exploration des paysages et des différentes traditions potières durant un voyage d'un an en Argentine. Depuis 2024 elle est installée au cœur des volcans d'Auvergne et partage son temps entre Paris et la Haute-Loire.</p>",
+        "portrait": 45,
+        "portrait_alt": "Charlotte Auroux, céramiste — Atelier ZougZoug"
     },
-    {
-      "label": "Sur-mesure & architecture",
-      "tagline": "Le sur-mesure comme point de départ.",
-      "texts": [
-        "Elle partage son temps entre la collaboration avec des clients à la recherche de pièces pour des projets spécifiques et la création d'œuvres uniques et expérimentales. Cette double approche lui permet d'explorer de nouveaux domaines artistiques et de nouveaux matériaux tout en conservant un style distinct et reconnaissable.",
-        "Elle conçoit et fabrique des luminaires en céramique faits main — suspensions et lampes à poser — développés en collaboration sur mesure avec des cabinets d'architectes pour des projets hôteliers et de restauration. Chaque création répond à des contraintes techniques exigeantes tout en s'inscrivant dans une recherche esthétique et chromatique approfondie."
-      ],
-      "image": "about-atelier.webp",
-      "image_alt": "L'atelier ZougZoug, pièces en cours de séchage",
-      "reverse": false,
-      "cta": true
+    "blocs": [
+        {
+            "label": "Entre matière brute et précision d'usage",
+            "tagline": "Une céramique ancrée dans le réel, attentive au détail.",
+            "texts": [
+                "ZougZoug, un mot-double qui sonne comme un rebond pour explorer des chemins de traverse, y glaner des petites roches volcaniques, des argiles et cendres de bois comme matières premières à ses réalisations."
+            ],
+            "image": 200,
+            "image_alt": "Détail de vases en céramique, émaux naturels",
+            "reverse": false
+        },
+        {
+            "label": "Poterie à vivre",
+            "tagline": "Des objets fonctionnels, pensés comme des pièces singulières.",
+            "texts": [
+                "En parallèle, Charlotte développe ses propres collections de vaisselle et d'art de la table seule ou en co-création avec des chefs et des restaurateurs, pensées pour accompagner l'expérience culinaire et l'identité des lieux.",
+                "Réalisées en petite série, ces pièces uniques traduisent un savoir-faire artisanal d'excellence et une approche résolument haut de gamme."
+            ],
+            "image": 201,
+            "image_alt": "Pièces en terre cuite, processus de création",
+            "reverse": true
+        },
+        {
+            "label": "Sur-mesure &amp; architecture",
+            "tagline": "Le sur-mesure comme point de départ.",
+            "texts": [
+                "Elle conçoit et fabrique des luminaires en céramique faits main — suspensions et lampes à poser — développés en collaboration sur mesure avec des cabinets d'architectes pour des projets hôteliers et de restauration.",
+                "Chaque création répond à des contraintes techniques exigeantes tout en s'inscrivant dans une recherche esthétique et chromatique approfondie."
+            ],
+            "image": 202,
+            "image_alt": "L'atelier ZougZoug, pièces en cours de séchage",
+            "reverse": false,
+            "cta": true
+        }
+    ],
+    "cta": {
+        "text": "<p>Un projet sur mesure en céramique ? Parlons-en.</p>",
+        "button": "Prendre contact",
+        "url": "/contact/"
     }
-  ],
-  "cta": {
-    "text": "Un projet sur mesure en céramique ?\nParlons-en.",
-    "button": "Prendre contact",
-    "url": "/contact/"
-  }
 }

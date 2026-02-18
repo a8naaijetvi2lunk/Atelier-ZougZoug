@@ -23,6 +23,8 @@ add_action('wp_enqueue_scripts', function () {
 		wp_enqueue_style('zz-cours', $uri . '/assets/css/cours.css', ['zz-main'], $ver);
 	} elseif (is_page_template('page-revendeurs.php') || is_page('revendeurs')) {
 		wp_enqueue_style('zz-revendeurs', $uri . '/assets/css/revendeurs.css', ['zz-main'], $ver);
+	} elseif (is_page_template('page-mentions-legales.php') || is_page('mentions-legales')) {
+		wp_enqueue_style('zz-mentions', $uri . '/assets/css/mentions.css', ['zz-main'], $ver);
 	} elseif (is_404()) {
 		wp_enqueue_style('zz-404', $uri . '/assets/css/404.css', ['zz-main'], $ver);
 	}
@@ -40,7 +42,7 @@ add_action('wp_enqueue_scripts', function () {
 		wp_enqueue_script('zz-home', $uri . '/assets/js/home.js', ['zz-swiper', 'zz-scrolltrigger', 'zz-main'], $ver, true);
 	}
 
-	// A propos : GSAP
+	// À propos : GSAP
 	if (is_page('a-propos')) {
 		wp_enqueue_script('zz-gsap', $uri . '/assets/js/vendor/gsap.min.js', [], '3', true);
 		wp_enqueue_script('zz-scrolltrigger', $uri . '/assets/js/vendor/ScrollTrigger.min.js', ['zz-gsap'], '3', true);

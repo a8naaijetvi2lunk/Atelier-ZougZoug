@@ -41,13 +41,13 @@ $projets = [
 		],
 	],
 	[
-		'title'      => 'Benoit Castel',
+		'title'      => 'Benoît Castel',
 		'category'   => 'art-de-la-table',
-		'client'     => 'Benoit Castel',
+		'client'     => 'Benoît Castel',
 		'year'       => '2022',
 		'location'   => '11 rue Sorbier 75020 Paris',
-		'short_desc' => "Assiettes a brunch co-signees — 30 pieces, gres blanc chamotte. Paris 20e.",
-		'description' => "Modele d'assiette co-signee avec le logo/emporte piece emblematique de ces patisseries-boulangeries. A retrouver a la table de la toute derniere adresse de Benoit Castel dans laquelle il devoile sa version tres personnelle du Coffee Shop a la francaise.",
+		'short_desc' => "Assiettes à brunch co-signées — 30 pièces, grès blanc chamotté. Paris 20e.",
+		'description' => "Modèle d'assiette co-signée avec le logo/emporte-pièce emblématique de ces pâtisseries-boulangeries. À retrouver à la table de la toute dernière adresse de Benoît Castel dans laquelle il dévoile sa version très personnelle du Coffee Shop à la française.",
 		'folder'     => 'benoit-castel',
 		'medias'     => [
 			'217-_J0A0441.webp',
@@ -56,9 +56,9 @@ $projets = [
 		],
 	],
 	[
-		'title'      => 'Creme — Table',
+		'title'      => 'Crème — Table',
 		'category'   => 'art-de-la-table',
-		'client'     => 'Creme',
+		'client'     => 'Crème',
 		'year'       => '',
 		'location'   => '',
 		'short_desc' => '90 pieces de vaisselle de service — 3 modeles. Assiettes et bols sur mesure.',
@@ -77,7 +77,7 @@ $projets = [
 		'client'     => 'Maison Fragile',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Collaboration avec la maison Fragile — pieces en ceramique artisanale.',
+		'short_desc' => 'Collaboration avec la maison Fragile — pièces en céramique artisanale.',
 		'description' => '',
 		'folder'     => 'maison-fragile',
 		'medias'     => [
@@ -94,7 +94,7 @@ $projets = [
 		'client'     => 'Petite Marmelade',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Vaisselle artisanale pour Petite Marmelade — boulangerie et patisserie.',
+		'short_desc' => 'Vaisselle artisanale pour Petite Marmelade — boulangerie et pâtisserie.',
 		'description' => '',
 		'folder'     => 'petite-marmelade',
 		'medias'     => [
@@ -130,7 +130,7 @@ $projets = [
 		'client'     => 'Verre a Pied',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Coupes, verres et pichets en ceramique — pieces uniques tournees a la main.',
+		'short_desc' => 'Coupes, verres et pichets en céramique — pièces uniques tournées à la main.',
 		'description' => '',
 		'folder'     => 'verre-a-pied',
 		'medias'     => [
@@ -146,7 +146,7 @@ $projets = [
 		'client'     => 'Adele',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Collection de lampes a poser en ceramique — formes sculpturales, finitions mates.',
+		'short_desc' => 'Collection de lampes à poser en céramique — formes sculpturales, finitions mates.',
 		'description' => '',
 		'folder'     => 'adele',
 		'medias'     => [
@@ -156,12 +156,12 @@ $projets = [
 		],
 	],
 	[
-		'title'      => 'Creme — Luminaires',
+		'title'      => 'Crème — Luminaires',
 		'category'   => 'luminaires',
-		'client'     => 'Creme',
+		'client'     => 'Crème',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Luminaires sur mesure en ceramique pour Creme — suspensions et appliques.',
+		'short_desc' => 'Luminaires sur mesure en céramique pour Crème — suspensions et appliques.',
 		'description' => '',
 		'folder'     => 'creme-luminaires',
 		'medias'     => [
@@ -203,7 +203,7 @@ $projets = [
 		'client'     => 'Sella St Barth',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Luminaires en ceramique pour Sella, St Barthelemy.',
+		'short_desc' => 'Luminaires en céramique pour Sella, St Barthélemy.',
 		'description' => '',
 		'folder'     => 'sella',
 		'medias'     => [
@@ -219,7 +219,7 @@ $projets = [
 		'client'     => 'Carhartt WIP',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Collaboration avec Carhartt WIP — pieces en ceramique en edition limitee.',
+		'short_desc' => 'Collaboration avec Carhartt WIP — pièces en céramique en édition limitée.',
 		'description' => '',
 		'folder'     => 'carhartt',
 		'medias'     => [
@@ -233,7 +233,7 @@ $projets = [
 		'client'     => 'Conscience Parfums',
 		'year'       => '',
 		'location'   => '',
-		'short_desc' => 'Brule-parfums en ceramique artisanale pour Conscience Parfums.',
+		'short_desc' => 'Brûle-parfums en céramique artisanale pour Conscience Parfums.',
 		'description' => '',
 		'folder'     => 'conscience-parfums',
 		'medias'     => [
@@ -333,7 +333,7 @@ foreach ($projets as $p) {
 	$imported++;
 }
 
-$msg = "Import termine : $imported projets importes.";
+$msg = "Import terminé : $imported projets importés.";
 if (!empty($errors)) {
 	$msg .= ' Erreurs : ' . implode(', ', $errors);
 }

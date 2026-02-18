@@ -82,7 +82,7 @@ foreach ($expos as $e) {
 }
 
 if (defined('WP_CLI')) {
-	WP_CLI::success("Import termine : $imported evenements importes.");
+	WP_CLI::success("Import terminé : $imported événements importés.");
 } else {
-	echo "Import termine : $imported evenements importes.\n";
+	echo "Import terminé : $imported événements importés.\n";
 }

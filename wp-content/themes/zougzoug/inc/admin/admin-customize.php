@@ -58,17 +58,8 @@ add_filter('menu_order', function ($menu_order) {
  * 2. ADMIN BAR — Branding ZZ
  * ============================================================
  */
-add_action('wp_before_admin_bar_render', function () {
-	global $wp_admin_bar;
-
-	// Masquer les elements inutiles
-	$wp_admin_bar->remove_node('wp-logo');
-	$wp_admin_bar->remove_node('updates');
-	$wp_admin_bar->remove_node('comments');
-	$wp_admin_bar->remove_node('new-content');
-	$wp_admin_bar->remove_node('search');
-
-	// Ajouter le logo ZZ
+// Logo ZZ en premier dans la barre (priorite 1 = avant site-name qui est a 31)
+add_action('admin_bar_menu', function ($wp_admin_bar) {
 	$wp_admin_bar->add_node([
 		'id'    => 'zz-logo',
 		'title' => '<svg width="24" height="23" viewBox="0 0 50 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-top:-2px;">
@@ -78,6 +69,88 @@ add_action('wp_before_admin_bar_render', function () {
 		'href'  => admin_url(),
 		'meta'  => ['class' => 'zz-admin-bar-logo'],
 	]);
+}, 1);
+
+// Nettoyage admin bar + renommer site-name
+add_action('wp_before_admin_bar_render', function () {
+	global $wp_admin_bar;
+
+	// Masquer les elements inutiles
+	$wp_admin_bar->remove_node('wp-logo');
+	$wp_admin_bar->remove_node('updates');
+	$wp_admin_bar->remove_node('comments');
+	$wp_admin_bar->remove_node('new-content');
+	$wp_admin_bar->remove_node('search');
+	$wp_admin_bar->remove_node('customize');
+	$wp_admin_bar->remove_node('appearance');
+
+	if (is_admin()) {
+		// Back-office : "Aller sur le site"
+		$site_node = $wp_admin_bar->get_node('site-name');
+		if ($site_node) {
+			$wp_admin_bar->add_node([
+				'id'    => 'site-name',
+				'title' => 'Aller sur le site',
+				'href'  => home_url('/'),
+				'meta'  => ['target' => '_blank'],
+			]);
+			$wp_admin_bar->remove_node('view-site');
+			$wp_admin_bar->remove_node('dashboard');
+		}
+	} else {
+		// Front-end : remplacer "Modifier la page" par le bon lien d'edition
+		$wp_admin_bar->remove_node('edit');
+
+		$edit_url   = '';
+		$edit_label = 'Modifier la page';
+
+		if (is_front_page()) {
+			$edit_url = admin_url('admin.php?page=zz-contenu-home');
+		} elseif (is_page('a-propos')) {
+			$edit_url = admin_url('admin.php?page=zz-contenu-about');
+		} elseif (is_page('contact')) {
+			$edit_url = admin_url('admin.php?page=zz-contenu-contact');
+		} elseif (is_page('cours')) {
+			$edit_url = admin_url('admin.php?page=zz-contenu-cours');
+		} elseif (is_page('revendeurs')) {
+			$edit_url = admin_url('admin.php?page=zz-contenu-revendeurs');
+		} elseif (is_page('collaborations') || is_post_type_archive('projet')) {
+			$edit_url   = admin_url('edit.php?post_type=projet');
+			$edit_label = 'Gérer les projets';
+		} elseif (is_singular('projet')) {
+			$edit_url   = get_edit_post_link(get_the_ID(), 'raw');
+			$edit_label = 'Modifier le projet';
+		}
+
+		if ($edit_url) {
+			$wp_admin_bar->add_node([
+				'id'    => 'zz-edit-page',
+				'title' => $edit_label,
+				'href'  => $edit_url,
+			]);
+		}
+
+		// Collaborations : lien vers l'editeur custom du contenu
+		if (is_page('collaborations')) {
+			$wp_admin_bar->add_node([
+				'id'    => 'zz-edit-page-wp',
+				'title' => 'Modifier la page',
+				'href'  => admin_url('admin.php?page=zz-contenu-collaborations'),
+			]);
+		}
+
+		// Revendeurs : lien rapide pour ajouter un evenement
+		if (is_page('revendeurs')) {
+			$wp_admin_bar->add_node([
+				'id'    => 'zz-new-event',
+				'title' => '+ Nouvel événement',
+				'href'  => admin_url('post-new.php?post_type=evenement'),
+			]);
+		}
+
+		// Supprimer le sous-menu site-name sur le front
+		$wp_admin_bar->remove_node('dashboard');
+	}
 });
 
 /**
@@ -224,6 +297,13 @@ add_action('admin_enqueue_scripts', function () {
 	wp_enqueue_style('zz-admin-global', $uri . '/inc/admin/admin-global.css', [], ZZ_VERSION);
 });
 
+// Charger les styles admin bar aussi cote front (utilisateurs connectes)
+add_action('wp_enqueue_scripts', function () {
+	if (!is_admin_bar_showing()) return;
+	$uri = get_template_directory_uri();
+	wp_enqueue_style('zz-admin-bar-front', $uri . '/inc/admin/admin-global.css', [], ZZ_VERSION);
+});
+
 /**
  * Masquer les notices ennuyeuses pour Charlotte
  */
@@ -236,7 +316,7 @@ add_action('admin_head', function () {
  * Footer admin custom
  */
 add_filter('admin_footer_text', function () {
-	return '<span style="font-family:General Sans,sans-serif;color:rgba(26,26,26,0.4);font-size:13px;">Atelier ZougZoug &mdash; Back-office sur mesure</span>';
+	return '<span style="font-family:General Sans,sans-serif;color:rgba(26,26,26,0.4);font-size:13px;">Backoffice sur mesure par <a href="https://yvescharvis.fr" target="_blank" rel="noopener" style="color:rgba(26,26,26,0.4);text-decoration:underline;">Yves Charvis</a></span>';
 });
 
 add_filter('update_footer', function () {
