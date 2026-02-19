@@ -55,6 +55,9 @@ require_once get_template_directory() . '/inc/admin/admin-api.php';
 // Admin bar + branding (doit etre charge partout car la barre admin s'affiche aussi cote front)
 require_once get_template_directory() . '/inc/admin/admin-customize.php';
 
+// Migration auto des URLs si le domaine change
+require_once get_template_directory() . '/inc/url-migration.php';
+
 // Admin only
 if (is_admin()) {
 	require_once get_template_directory() . '/inc/admin/admin-dashboard.php';
